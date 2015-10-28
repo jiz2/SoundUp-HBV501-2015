@@ -26,7 +26,7 @@ public class UploadController {
         // Here we will show how to add attributes to a model and send it to the view
 
         // Faked generated Url
-        String name = "This is a fake Url";
+        String res = "This is a fake Url";
 
         // Now let's add the attributes to the model
         model.addAttribute("res",res);

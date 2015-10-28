@@ -71,21 +71,4 @@ public class HomeController {
         // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
         return "User";
     }
-
-    // To call this method, enter "localhost:8080/upload" into a browser
-    @RequestMapping(value = "/upload", method = RequestMethod.GET)
-    public String upload(Model model){
-
-        // Here we will show how to add attributes to a model and send it to the view
-
-        // Faked generated Url
-        String name = "This is a fake Url";
-
-        // Now let's add the attributes to the model
-        model.addAttribute("res",res);
-
-        // By adding attributes to the model, we can pass information from the controller
-        // to the view (the .jsp file).
-        return "Result";
-    }
 }
