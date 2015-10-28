@@ -21,7 +21,9 @@
 				<article>
 					<p>A website that will dominate the market by 2017.</p>
 					<p>Sævör grét áðan því úlpan var ónýt.</p>
-					<p>Klukkan er:</p>
+					<form class="form-inline" action="demo/page" method="get">
+						<button type="submit" class="btn btn-danger">Do not push this button!</button>
+					</form>
 				</article>
 				<button>
 					<a href="./upload">Upload a Sound File</a>
