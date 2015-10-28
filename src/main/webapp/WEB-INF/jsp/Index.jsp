@@ -23,6 +23,9 @@
 					<p>Sævör grét áðan því úlpan var ónýt.</p>
 					<p>Klukkan er:</p>
 				</article>
+				<button>
+					<a href="/upload">Upload a Sound File</a>
+				</button>
 			</main>
 			<nav>
 				<p>NAV</p>
