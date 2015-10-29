@@ -13,7 +13,9 @@
 	    <h1>Result Page</h1>
 	    <p>Here is the link to your uploaded file.</p>
 
-	    <p>${res}</p>
+	    <p>Local Filepath: ${userFilepath}</p>
+	    <p>Database Filepath: ${databaseFilepath}</p>
+	    <p>Url: ${url}</p>
 
     </body>
 
