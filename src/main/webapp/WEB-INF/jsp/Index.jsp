@@ -24,7 +24,10 @@
 					<p>Klukkan er:</p>
 				</article>
 				<button>
-					<a href="/upload">Upload a Sound File</a>
+					<a href="./upload">Upload a Sound File</a>
+				</button>
+				<button>
+					<a href="./user">To Users</a>
 				</button>
 			</main>
 			<nav>

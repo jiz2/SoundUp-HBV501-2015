@@ -10,10 +10,10 @@
     </head>
     <body>
 
-    <h1>Result Page</h1>
-    <p>Here is the link to your uploaded file.</p>
+	    <h1>Result Page</h1>
+	    <p>Here is the link to your uploaded file.</p>
 
-    <p>${res}</p>
+	    <p>${res}</p>
 
     </body>
 

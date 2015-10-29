@@ -10,14 +10,14 @@ import project.service.StringManipulationService;
 @Controller
 public class UploadController {
 
-    // Instance Variables
-    StringManipulationService stringService;
+    // // Instance Variables
+    // StringManipulationService stringService;
 
-    // Dependency Injection
-    @Autowired
-    public UploadController(StringManipulationService stringService) {
-        this.stringService = stringService;
-    }
+    // // Dependency Injection
+    // @Autowired
+    // public UploadController(StringManipulationService stringService) {
+    //     this.stringService = stringService;
+    // }
 
     // To call this method, enter "localhost:8080/upload" into a browser
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
