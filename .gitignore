@@ -1,9 +1,8 @@
+/target/classes/application.properties
 # Created by https://www.gitignore.io/api/java,intellij,eclipse
 
 ### Java ###
 *.class
-
-*.lst
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -106,7 +105,4 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
-
-# NetBeans Core
-*.jar.original
-*.netbeans_automatic_build
+/target/
