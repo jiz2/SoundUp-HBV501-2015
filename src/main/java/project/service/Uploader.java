@@ -2,6 +2,7 @@ package project.service;
 
 import org.springframework.stereotype.Service;
 
+import org.springframework.ui.Model;
 import project.service.WebGenerator;
 
 /**
@@ -13,12 +14,12 @@ import project.service.WebGenerator;
 @Service
 public class Uploader {
 	
-	private path;
-	private webgen;
+	private String path;
+	private WebGenerator webgen;
 
     /**
      * Sets the local URI of the file for upload
-     * @param local URI of the file to be uploaded
+     * @param localPath local URI of the file to be uploaded
      * @return nothing
      */
     public void setPath(String localPath){
@@ -31,6 +32,9 @@ public class Uploader {
      * @return nothing
      */
     public void upload(Model model){
-    	
+    	// Now let's add the attributes to the model
+        model.addAttribute("localURI",path);
+//        model.addAttribute("soundURI",soundURI);
+//        model.addAttribute("url",url);
     }
 }

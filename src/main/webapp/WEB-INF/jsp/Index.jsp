@@ -23,6 +23,11 @@
 					<p>Sævör grét áðan því úlpan var ónýt.</p>
 					<p>Klukkan er:</p>
 				</article>
+				<form method="POST" enctype="multipart/form-data" action="/upload">
+					File to upload: <input type="file" name="file">
+					Name: <input type="text" name="name">
+					<input type="submit" value="Upload">
+				</form>
 				<button>
 					<a href="./upload">Upload a Sound File</a>
 				</button>

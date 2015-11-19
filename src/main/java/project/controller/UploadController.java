@@ -27,11 +27,6 @@ public class UploadController {
         // Let Uploader upload selected file
 		uploader.upload(model);
 
-        // Now let's add the attributes to the model
-        model.addAttribute("localURI",localURI);
-        model.addAttribute("soundURI",soundURI);
-        model.addAttribute("url",url);
-
         // By adding attributes to the model, we can pass information from the controller
         // to the view (the .jsp file).
         return "Result";

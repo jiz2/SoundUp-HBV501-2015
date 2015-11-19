@@ -17,7 +17,7 @@ public class WebGenerator {
      * @return String
      */
     public String makeUrl(String soundURI){
-    	String url = "This is a fake Url to \'" + databaseFilepath + "\'";
+    	String url = "This is a fake Url to \'" + soundURI + "\'";
     	return url;
     }
 }
