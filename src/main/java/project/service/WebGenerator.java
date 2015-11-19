@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
  *              something basic as this would be handled where it is needed
  */
 @Service
-public class UrlGenerator {
+public class WebGenerator {
 
     /**
      * Returns the string that is passed to the method with the First Character in Upper Case
      * @param string String to have its first character converted to Upper Case
      * @return String
      */
-    public String generateUrl(String databaseFilepath){
+    public String makeUrl(String soundURI){
     	String url = "This is a fake Url to \'" + databaseFilepath + "\'";
     	return url;
     }

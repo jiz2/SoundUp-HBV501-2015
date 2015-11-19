@@ -2,22 +2,35 @@ package project.service;
 
 import org.springframework.stereotype.Service;
 
+import project.service.WebGenerator;
+
 /**
- * Service class that has methods for String Manipulation
+ * Service class that has methods for Uploading
  *
  * DISCLAIMER:  This class is just for demonstration purposes,
  *              something basic as this would be handled where it is needed
  */
 @Service
 public class Uploader {
+	
+	private path;
+	private webgen;
 
     /**
-     * Returns the string that is passed to the method with the First Character in Upper Case
-     * @param string String to have its first character converted to Upper Case
-     * @return String
+     * Sets the local URI of the file for upload
+     * @param local URI of the file to be uploaded
+     * @return nothing
      */
-    public String storeAndGetPath(String userFilepath){
-        String path = "Store the file \'" + userFilepath + "\'";
-    	return path;
+    public void setPath(String localPath){
+        this.path = localPath;
+    }
+	
+	/**
+     * Uploads the file with preentered path
+     * @param model Model to pass result arguments
+     * @return nothing
+     */
+    public void upload(Model model){
+    	
     }
 }

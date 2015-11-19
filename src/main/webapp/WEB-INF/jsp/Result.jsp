@@ -13,8 +13,8 @@
 	    <h1>Result Page</h1>
 	    <p>Here is the link to your uploaded file.</p>
 
-	    <p>Local Filepath: ${userFilepath}</p>
-	    <p>Database Filepath: ${databaseFilepath}</p>
+	    <p>Local Filepath: ${localURI}</p>
+	    <p>Database Filepath: ${soundURI}</p>
 	    <p>Url: ${url}</p>
 
     </body>
