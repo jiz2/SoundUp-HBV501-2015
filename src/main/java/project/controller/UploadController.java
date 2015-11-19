@@ -5,31 +5,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import project.service.StringManipulationService;
+
+import project.service.Uploader;
 
 @Controller
 public class UploadController {
 
-    // // Instance Variables
-    // StringManipulationService stringService;
+     // Instance Variables
+     Uploader uploader;
 
-    // // Dependency Injection
-    // @Autowired
-    // public UploadController(StringManipulationService stringService) {
-    //     this.stringService = stringService;
-    // }
+     // Dependency Injection
+     @Autowired
+     public UploadController(Uploader uploader) {
+         this.uploader = uploader;
+     }
 
     // To call this method, enter "localhost:8080/upload" into a browser
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String upload(Model model){
 
-        // Here we will show how to add attributes to a model and send it to the view
-
-        // Faked generated Url
-        String res = "This is a fake Url";
+        // Let Uploader upload selected file
+		uploader.upload(model);
 
         // Now let's add the attributes to the model
-        model.addAttribute("res",res);
+        model.addAttribute("localURI",localURI);
+        model.addAttribute("soundURI",soundURI);
+        model.addAttribute("url",url);
 
         // By adding attributes to the model, we can pass information from the controller
         // to the view (the .jsp file).
