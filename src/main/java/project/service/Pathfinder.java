@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  *              something basic as this would be handled where it is needed
  */
 @Service
-public class DatabaseConnector {
+public class Pathfinder {
 
     /**
      * Returns the string that is passed to the method with the First Character in Upper Case
