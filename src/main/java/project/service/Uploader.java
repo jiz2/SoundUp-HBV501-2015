@@ -1,5 +1,6 @@
 package project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.springframework.ui.Model;
@@ -15,7 +16,13 @@ import project.service.WebGenerator;
 public class Uploader {
 	
 	private String path;
-	private WebGenerator webgen;
+	WebGenerator webgen;
+
+    // Dependency Injection
+    @Autowired
+    public Uploader(WebGenerator webgen) {
+        this.webgen = webgen;
+    }
 
     /**
      * Sets the local URI of the file for upload
