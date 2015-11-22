@@ -24,9 +24,8 @@ public class UploadController {
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String upload(Model model){
 
-        // Here we will show how to add attributes to a model and send it to the view
-
-        uploader.upload(model);
+        // Let Uploader upload selected file
+		uploader.upload(model);
 
         // By adding attributes to the model, we can pass information from the controller
         // to the view (the .jsp file).

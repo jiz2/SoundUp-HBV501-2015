@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import project.service.WebGenerator;
 
 /**
- * Service class that has methods for String Manipulation
+ * Service class that has methods for Uploading
  *
  * DISCLAIMER:  This class is just for demonstration purposes,
  *              something basic as this would be handled where it is needed
