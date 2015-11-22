@@ -1,3 +1,4 @@
+/target/classes/application.properties
 # Created by https://www.gitignore.io/api/java,intellij,eclipse
 
 ### Java ###
@@ -108,3 +109,5 @@ local.properties
 # NetBeans Core
 *.jar.original
 *.netbeans_automatic_build
+
+target/

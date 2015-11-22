@@ -1,4 +1,12 @@
-project\Application.class
+project\controller\UploadController.class
 project\service\StringManipulationService.class
 project\controller\HomeController.class
-project\controller\DemoController.class
+project\service\Implementation\PostitNoteServiceImplementation.class
+project\service\DatabaseConnector.class
+project\persistence\repositories\PostitNoteRepository.class
+project\service\PostitNoteService.class
+project\persistence\entities\PostitNote.class
+project\Application.class
+project\service\WebGenerator.class
+project\service\Uploader.class
+project\controller\PostitNoteController.class

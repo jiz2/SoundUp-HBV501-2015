@@ -1,23 +1,47 @@
 package project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.ui.Model;
+import project.service.WebGenerator;
+
 /**
- * Service class that has methods for String Manipulation
+ * Service class that has methods for Uploading
  *
  * DISCLAIMER:  This class is just for demonstration purposes,
  *              something basic as this would be handled where it is needed
  */
 @Service
 public class Uploader {
+	
+	private String path;
+	WebGenerator webgen;
+
+    // Dependency Injection
+    @Autowired
+    public Uploader(WebGenerator webgen) {
+        this.webgen = webgen;
+    }
 
     /**
-     * Returns the string that is passed to the method with the First Character in Upper Case
-     * @param string String to have its first character converted to Upper Case
-     * @return String
+     * Sets the local URI of the file for upload
+     * @param localPath local URI of the file to be uploaded
+     * @return nothing
      */
-    public String storeAndGetPath(String userFilepath){
-        String path = "Store the file \'" + userFilepath + "\'";
-    	return path;
+    public void setPath(String localPath){
+        this.path = localPath;
+    }
+	
+	/**
+     * Uploads the file with preentered path
+     * @param model Model to pass result arguments
+     * @return nothing
+     */
+    public void upload(Model model){
+    	// Now let's add the attributes to the model
+        model.addAttribute("localURI",path);
+//        model.addAttribute("soundURI",soundURI);
+//        model.addAttribute("url",url);
     }
 }
