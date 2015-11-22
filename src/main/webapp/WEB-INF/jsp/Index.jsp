@@ -25,6 +25,15 @@
 						<button type="submit" class="btn btn-danger">Do not push this button!</button>
 					</form>
 				</article>
+				<form method="POST" enctype="multipart/form-data" action="/upload">
+					File to upload: <input type="file" name="file">
+					Name: <input type="text" name="name">
+					<input type="submit" value="Upload">
+				</form>
+				<ul>
+					<li><a href="/postit">Click here for Persistence Layer Demo</a></li>
+				</ul>
+				<br/>
 				<button>
 					<a href="./upload">Upload a Sound File</a>
 				</button>
