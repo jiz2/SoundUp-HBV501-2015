@@ -1,0 +1,12 @@
+body {font-size: 16px; padding: 4.375em 0;}
+#searchForm .form-group {
+	display: inline;
+}
+
+#searchForm .input-group {
+	display: table;
+}
+
+#searchForm .input-group-btn, #searchForm span.input-group-addon {
+	width: 1%;
+}

@@ -13,9 +13,9 @@
     <h1>User Page</h1>
     <p>Here could be some user information</p>
 
-    <table border="1px gray">
+    <table>
         <thead>
-            <tr style="font-weight: 600;">
+            <tr>
                 <td>Name</td>
                 <td>Job</td>
                 <td>email</td>

@@ -1,49 +1,21 @@
-<!DOCTYPE html>
+<!-- Fetch the layout -->
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- What title should be on this page? -->
+<t:layout su_title="Home">
 
-<html lang="en">
-	<head>
-		<title>Sound hosting - Group 26</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css">
-	</head>
-	<body>
-		<div class="wrapper">
-			<header>
-				<h1>SoundUp</h1>
-				<h2>Share your sounds with your friends!</h2>
-			</header>
-			<main>
-				<article>
-					<p>A website that will dominate the market by 2017.</p>
-					<p>Sævör grét áðan því úlpan var ónýt.</p>
-					<form class="form-inline" action="demo/page" method="get">
-						<button type="submit" class="btn btn-danger">Do not push this button!</button>
-					</form>
-				</article>
-				<button>
-					<a href="./upload">Upload a Sound File</a>
-				</button>
-				<button>
-					<a href="./user">To Users</a>
-				</button>
-			</main>
-			<nav>
-				<p>NAV</p>
-				<ul></ul>
-			</nav>
-			<aside>
-				<p>ASIDE</p>
-			</aside>
-			<footer>
-				<p>HBV501G group 26, University of Iceland, Fall 2015</p>
-			</footer>
-		</div>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="${pageContext.request.contextPath}/public/js/script.js"></script>
-	</body>
-</html>
+<jsp:attribute name="su_content"><!-- Implement the su_content html block -->
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1>Welcome</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit ante mi, sit amet consectetur libero vestibulum sed. Ut a tristique quam, in feugiat est. Nullam bibendum justo at suscipit suscipit. Aliquam ac lorem porttitor, maximus velit vitae, volutpat nulla.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="./upload" role="button">Go &raquo;</a>
+        </p>
+      </div>
+
+    </div>
+</jsp:attribute>
+ 
+</t:layout>
