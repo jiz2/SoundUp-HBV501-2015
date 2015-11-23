@@ -7,7 +7,8 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" data-target="#aboutProject" data-toggle="modal" href="#" type="button">SoundUp</a>
+			<%--<a class="navbar-brand" data-target="#aboutProject" data-toggle="modal" href="#" type="button">SoundUp</a>--%>
+			<a class="navbar-brand" href="/" type="button">SoundUp</a>
 		</div>
 		<div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-left btn-group">

@@ -1,22 +1,22 @@
-<!DOCTYPE html>
+<!-- Fetch the layout -->
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- What title should be on this page? -->
+<t:layout su_title="Result">
+    <jsp:attribute name="su_content"><!-- Implement the su_content html block -->
 
-<html lang="en">
+        <div class="container">
 
-    <head>
-        <title>Result Page</title>
-    </head>
-    <body>
+            <div class="jumbotron">
+                <h1>Result Page (Still a placeholder)</h1>
+                <p>Here is the link to your uploaded file.</p>
 
-	    <h1>Result Page</h1>
-	    <p>Here is the link to your uploaded file.</p>
+                <p>Local Filepath: ${localURI}</p>
+                <p>Database Filepath: ${soundURI}</p>
+                <p>Url: ${url}</p>
+            </div>
 
-	    <p>Local Filepath: ${userFilepath}</p>
-	    <p>Database Filepath: ${databaseFilepath}</p>
-	    <p>Url: ${url}</p>
+        </div>
 
-    </body>
-
-</html>
+    </jsp:attribute>
+</t:layout>
