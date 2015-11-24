@@ -19,11 +19,6 @@ public class SoundClip {
     private String name;
     private byte[] data;
 
-    // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
-    // to our model so we can use it with our form
-    public SoundClip() {
-    }
-
     public SoundClip(String name, byte[] data) {
         this.name = name;
         this.data = data;

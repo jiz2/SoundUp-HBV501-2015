@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import project.service.Uploader;
 
@@ -36,11 +38,17 @@ public class UploadController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(Model model){
+	public String upload(Model model, @RequestParam("file") MultipartFile file){
+		if (!file.isEmpty()) {
+			try {
+				uploader.setPath(file.getOriginalFilename());
 
-		// Let Uploader upload selected file
-
-		uploader.upload(model);
+				// Let Uploader upload selected file
+				uploader.upload(model, file);
+			} catch (Exception e) {
+				model.addAttribute("errMsg",e.getMessage());
+			}
+		}
 
 		// By adding attributes to the model, we can pass information from the controller
 		// to the view (the .jsp file).
