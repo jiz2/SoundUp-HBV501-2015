@@ -9,71 +9,71 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class PostitNoteServiceImplementation implements PostitNoteService {
+public class SoundClipService {
 
     // Instance Variables
-    PostitNoteRepository repository;
+    SoundClipRepository repository;
 
     // Dependency Injection
     @Autowired
-    public PostitNoteServiceImplementation(PostitNoteRepository repository) {
+    public SoundClipService(SoundClipRepository repository) {
         this.repository = repository;
     }
 
     /**
-     * Save a {@link PostitNote}
-     * @param postitNote {@link PostitNote} to be saved
-     * @return {@link PostitNote} that was saved
+     * Save a {@link SoundClip}
+     * @param soundClip {@link SoundClip} to be saved
+     * @return {@link SoundClip} that was saved
      */
-    public PostitNote save(PostitNote postitNote) {
-        return repository.save(postitNote);
+    public SoundClip save(SoundClip soundClip) {
+        return repository.save(soundClip);
     }
 
     /**
-     * Delete {@link PostitNote}
-     * @param postitNote {@link PostitNote} to be deleted
+     * Delete {@link SoundClip}
+     * @param soundClip {@link SoundClip} to be deleted
      */
-    public void delete(PostitNote postitNote) {
-        repository.delete(postitNote);
+    public void delete(SoundClip soundClip) {
+        repository.delete(soundClip);
     }
 
     /**
-     * Get all {@link PostitNote}s
-     * @return A list of {@link PostitNote}s
+     * Get all {@link SoundClip}s
+     * @return A list of {@link SoundClip}s
      */
-    public List<PostitNote> findAll() {
+    public List<SoundClip> findAll() {
         return repository.findAll();
     }
 
     /**
-     * Get all {@link PostitNote}s in a reverse order
-     * @return A reversed list of {@link PostitNote}s
+     * Get all {@link SoundClip}s in a reverse order
+     * @return A reversed list of {@link SoundClip}s
      */
-    public List<PostitNote> findAllReverseOrder() {
+    public List<SoundClip> findAllReverseOrder() {
         // Get all the Postit notes
-        List<PostitNote> postitNotes = repository.findAll();
+        List<SoundClip> soundClips = repository.findAll();
 
         // Reverse the list
-        Collections.reverse(postitNotes);
+        Collections.reverse(soundClips);
 
-        return postitNotes;
+        return soundClips;
     }
 
     /**
-     * Find a {@link PostitNote} based on {@link Long id}
+     * Find a {@link SoundClip} based on {@link Long id}
      * @param id {@link Long}
-     * @return A {@link PostitNote} with {@link Long id}
+     * @return A {@link SoundClip} with {@link Long id}
      */
-    public PostitNote findOne(Long id) {
+    public SoundClip findOne(Long id) {
         return repository.findOne(id);
     }
 
     /**
-     * Find all {@link PostitNote}s with {@link String name}
+     * Find all {@link SoundClip}s with {@link String name}
      * @param name {@link String}
-     * @return All {@link PostitNote}s with the {@link String name} passed
+     * @return All {@link SoundClip}s with the {@link String name} passed
      */
-    public List<PostitNote> findByName(String name) {
+    public List<SoundClip> findByName(String name) {
         return repository.findByName(name);
     }
 }

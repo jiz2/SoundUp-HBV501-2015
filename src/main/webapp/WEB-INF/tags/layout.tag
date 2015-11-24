@@ -2,6 +2,7 @@
 <%@tag description="Simple Template" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
  
 <!-- We need to declare blocks, su_ is a prefix that stands for SoundUp -->
 <%@attribute name="su_title"%>

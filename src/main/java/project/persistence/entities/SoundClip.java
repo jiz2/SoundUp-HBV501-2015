@@ -17,7 +17,6 @@ public class SoundClip {
     private Long id;
 
     private String name;
-    private String path;
     private byte[] data;
 
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
@@ -25,9 +24,9 @@ public class SoundClip {
     public SoundClip() {
     }
 
-    public SoundClip(String name, String path, ) {
+    public SoundClip(String name, byte[] data) {
         this.name = name;
-        this.note = note;
+        this.data = data;
     }
 
     public Long getId() {
@@ -46,7 +45,7 @@ public class SoundClip {
         this.name = name;
     }
 
-    public String getData() {
+    public byte[] getData() {
         return data;
     }
 
@@ -58,7 +57,8 @@ public class SoundClip {
     @Override
     public String toString() {
         return String.format(
-                "Sound Clip[name=%s, path=%s]",
-                name,path);
+                "Sound Clip[name=%s, data=%s]",
+                name, new String(data)
+        );
     }
 }
