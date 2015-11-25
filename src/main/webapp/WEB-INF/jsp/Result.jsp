@@ -19,7 +19,6 @@
 
                     <%--Display Result Link otherwise--%>
                     <c:otherwise>
-                        <p>File Type: ${type}</p>
                         <p>Url: ${url}</p>
                     </c:otherwise>
                 </c:choose>

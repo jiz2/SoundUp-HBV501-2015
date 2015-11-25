@@ -65,7 +65,6 @@ public class Uploader {
         }
 
         // Now let's add the attributes to the model
-        model.addAttribute("type", file.getContentType());
         model.addAttribute("url", webgen.makeUrl(name));
 
         // Reset name
