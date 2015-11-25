@@ -27,9 +27,12 @@ public class DatabaseConnector {
      * Returns the string that is passed to the method with the First Character in Upper Case
      * @return String
      */
-    public String setSoundClip(SoundClip sc){
-        // Here needs to add sc to our database (SoundClipRepository)
-        String path = "yourPathHere";
-    	return path;
+    public void setSoundClip(SoundClip sc) throws Exception {
+        try {
+            // Here needs to add sc to our database (SoundClipRepository)
+            scService.store(sc);
+        } catch (org.hibernate.exception.ConstraintViolationException ce) {
+            throw new Exception("A file already exists with the same name!");
+        }
     }
 }

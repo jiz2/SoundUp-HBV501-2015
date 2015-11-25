@@ -41,13 +41,16 @@ public class UploadController {
 	public String upload(Model model, @RequestParam("file") MultipartFile file){
 		if (!file.isEmpty()) {
 			try {
-				uploader.setPath(file.getOriginalFilename());
+				// Make sure the file is valid
+				uploader.setPath(file);
 
 				// Let Uploader upload selected file
 				uploader.upload(model, file);
 			} catch (Exception e) {
-				model.addAttribute("errMsg",e.getMessage());
+				model.addAttribute("errMsg", e.getMessage());
 			}
+		} else {
+			model.addAttribute("errMsg", "Please select a file for upload!");
 		}
 
 		// By adding attributes to the model, we can pass information from the controller

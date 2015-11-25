@@ -25,7 +25,7 @@ public class SoundClipService {
      * @param soundClip {@link SoundClip} to be saved
      * @return {@link SoundClip} that was saved
      */
-    public SoundClip save(SoundClip soundClip) {
+    public SoundClip store(SoundClip soundClip) {
         return repository.save(soundClip);
     }
 
@@ -73,7 +73,7 @@ public class SoundClipService {
      * @param name {@link String}
      * @return All {@link SoundClip}s with the {@link String name} passed
      */
-    public List<SoundClip> findByName(String name) {
+    public SoundClip findByName(String name) {
         return repository.findByName(name);
     }
 }

@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 public class WebGenerator {
 
     /**
-     * Returns the string that is passed to the method with the First Character in Upper Case
-     * @param soundURI String to have its first character converted to Upper Case
-     * @return String
+     * Generates the url to the uploaded file
+     * @param filename name of the uploaded file
+     * @return String that is the url
      */
-    public String makeUrl(String soundURI){
-    	String url = "This is a fake Url to \'" + soundURI + "\'";
+    public String makeUrl(String filename){
+    	String url = "This is a fake Url to \'" + filename + "\'";
     	return url;
     }
 }

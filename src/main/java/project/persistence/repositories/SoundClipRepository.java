@@ -15,17 +15,11 @@ import java.util.List;
  */
 public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
 
-    SoundClip save(SoundClip postitNote);
+    SoundClip save(SoundClip soundClip);
 
-    void delete(SoundClip postitNote);
+    void delete(SoundClip soundClip);
 
     List<SoundClip> findAll();
-
-    // If we need a custom query that maybe doesn't fit the naming convention used by the JPA repository,
-    // then we can write it quite easily with the @Query notation, like you see below.
-    // This method returns all SoundClips where the length of the name is equal or greater than 3 characters.
-    @Query(value = "SELECT p FROM SoundClip p where length(p.name) >= 3 ")
-    List<SoundClip> findAllWithNameLongerThan3Chars();
 
     // Instead of the method findAllReverseOrder() in SoundClipService.java,
     // We could have used this method by adding the words
@@ -35,5 +29,5 @@ public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
 
     SoundClip findOne(Long id);
 
-    List<SoundClip> findByName(String name);
+    SoundClip findByName(String name);
 }

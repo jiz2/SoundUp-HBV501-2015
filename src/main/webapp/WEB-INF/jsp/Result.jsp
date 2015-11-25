@@ -10,7 +10,7 @@
             <div class="jumbotron">
 
                 <h1>Result Page (Still a placeholder)</h1>
-
+                <%--${requestScope['javax.servlet.forward.request_uri']}--%>
                 <c:choose>
                     <%--If Error has occured--%>
                     <c:when test="${not empty errMsg}">
@@ -19,6 +19,7 @@
 
                     <%--Display Result Link otherwise--%>
                     <c:otherwise>
+                        <p>File Type: ${type}</p>
                         <p>Url: ${url}</p>
                     </c:otherwise>
                 </c:choose>
