@@ -29,5 +29,5 @@ public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
 
     SoundClip findOne(Long id);
 
-    SoundClip findByName(String name);
+    List<SoundClip> findByName(String name);
 }

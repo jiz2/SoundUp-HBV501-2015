@@ -17,10 +17,16 @@ public class SoundClip {
     private Long id;
 
     private String name;
+    private String ext;
     private byte[] data;
 
-    public SoundClip(String name, byte[] data) {
+    // Database constructor
+    public SoundClip() {
+    }
+
+    public SoundClip(String name, String ext, byte[] data) {
         this.name = name;
+        this.ext = ext;
         this.data = data;
     }
 
@@ -38,6 +44,14 @@ public class SoundClip {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String name) {
+        this.ext = ext;
     }
 
     public byte[] getData() {

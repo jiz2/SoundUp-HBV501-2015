@@ -9,7 +9,7 @@
         <div class="container">
             <div class="jumbotron">
 
-                <h1>Result Page (Still a placeholder)</h1>
+                <h1>Result Page</h1>
                 <%--${requestScope['javax.servlet.forward.request_uri']}--%>
                 <c:choose>
                     <%--If Error has occured--%>
@@ -18,9 +18,9 @@
                     </c:when>
 
                     <%--File Testing--%>
-                    <c:when test="${not empty clip}">
+                    <c:when test="${not empty name}">
                         <p>Filename: ${name}</p>
-                        <p>${clip}</p>
+                        <embed src="data:audio/${ext};base64,${data}" autostart="true" loop="false"/>
                     </c:when>
 
                     <%--Display Result Link otherwise--%>

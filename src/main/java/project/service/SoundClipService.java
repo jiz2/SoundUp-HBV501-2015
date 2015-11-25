@@ -74,6 +74,6 @@ public class SoundClipService {
      * @return All {@link SoundClip}s with the {@link String name} passed
      */
     public SoundClip findByName(String name) {
-        return repository.findByName(name);
+        return repository.findByName(name).get(0);
     }
 }

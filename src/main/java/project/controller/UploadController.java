@@ -27,10 +27,7 @@ public class UploadController {
 	public String result(Model model){
 
 		// Pass dummy text for the get Page
-		model.addAttribute("localURI", "Some random local URI for the file");
-		model.addAttribute("soundURI", "Here be the URL of the file on the server.");
-		model.addAttribute("url", "Here's the link to the page that " +
-				"displays the URI once the system is complete");
+		model.addAttribute("url", "Here_be_dummy_URL");
 
 		// By adding attributes to the model, we can pass information from the controller
 		// to the view (the .jsp file).
@@ -41,9 +38,6 @@ public class UploadController {
 	public String upload(Model model, @RequestParam("file") MultipartFile file){
 		if (!file.isEmpty()) {
 			try {
-				// Make sure the file is valid
-				uploader.setPath(file);
-
 				// Let Uploader upload selected file
 				uploader.upload(model, file);
 			} catch (Exception e) {

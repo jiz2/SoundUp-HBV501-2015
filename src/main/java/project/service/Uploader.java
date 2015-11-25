@@ -32,18 +32,16 @@ public class Uploader {
     }
 
     /**
-    * Sets the local URI of the file for upload
-    * @param file local URI of the file to be uploaded
+    * Sets the name of the file for upload
+    * @param type type of the file
+    * @param name name of the file
     * @return nothing
     */
-    public void setPath(MultipartFile file) throws Exception {
+    public void setPath(String type, String name) throws Exception {
 
-        // Check for file extensions
-        String type = file.getContentType().split("/")[0];
-
-        // Throws Exception if file extension is not accepted
+        // Throws Exception if file type is not accepted
         if (type.equalsIgnoreCase("audio")) {
-            this.name = file.getOriginalFilename();
+            this.name = name.replaceAll(" ", "_");
         } else {
             throw new Exception("This file type is not accepted.");
         }
@@ -57,9 +55,13 @@ public class Uploader {
     */
     public void upload(Model model, MultipartFile file) throws Exception {
 
+        // Make sure the file is valid
+        String[] type = file.getContentType().split("/");
+        setPath(type[0], file.getOriginalFilename());
+
         // Store the file in the database
         try {
-            dbCon.setSoundClip(new SoundClip(name, file.getBytes()));
+            dbCon.setSoundClip(new SoundClip(name, type[1], file.getBytes()));
         } catch (IOException ioe) {
             throw new Exception("Failed to upload the file. Please try again.");
         }
