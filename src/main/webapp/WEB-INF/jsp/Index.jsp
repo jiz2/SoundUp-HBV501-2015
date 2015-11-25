@@ -17,17 +17,6 @@
                     <input id="sound" type="file" name="file">
                 </label>
             </form>
-            <br>
-            <ul>
-                <li><a href="/postit">Click here for Persistence Layer Demo</a></li>
-            </ul>
-            <br/>
-            <button>
-                <a href="./user">To Users</a>
-            </button>
-            <p>
-                <a class="btn btn-lg btn-primary" href="./upload" role="button">Upload a Sound File &raquo;</a>
-            </p>
         </div>
 
     </div>

@@ -17,7 +17,6 @@ public class WebGenerator {
      * @return String that is the url
      */
     public String makeUrl(String filename){
-    	String url = "This is a fake Url to \'" + filename + "\'";
-    	return url;
+    	return "/clip/" + filename;
     }
 }

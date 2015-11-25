@@ -17,9 +17,15 @@
                         <p>${errMsg}</p>
                     </c:when>
 
+                    <%--File Testing--%>
+                    <c:when test="${not empty clip}">
+                        <p>Filename: ${name}</p>
+                        <p>${clip}</p>
+                    </c:when>
+
                     <%--Display Result Link otherwise--%>
                     <c:otherwise>
-                        <p>Url: ${url}</p>
+                        <a href=${url}><p>Click here to view your uploaded file.</p></a>
                     </c:otherwise>
                 </c:choose>
 

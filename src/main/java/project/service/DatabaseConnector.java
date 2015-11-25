@@ -35,4 +35,8 @@ public class DatabaseConnector {
             throw new Exception("A file already exists with the same name!");
         }
     }
+
+    public SoundClip getSoundClip(String name) {
+        return scService.findByName(name);
+    }
 }
