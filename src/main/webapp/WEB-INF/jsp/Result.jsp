@@ -20,7 +20,9 @@
                     <%--File Testing--%>
                     <c:when test="${not empty name}">
                         <p>Filename: ${name}</p>
-                        <embed src="data:audio/${ext};base64,${data}" autostart="true" loop="false"/>
+                        <audio controls autoplay="true" loop="false"> 
+							<source src="data:audio/${ext};base64,${data}">
+						</audio>
                     </c:when>
 
                     <%--Display Result Link otherwise--%>
