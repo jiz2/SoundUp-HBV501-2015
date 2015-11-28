@@ -1,5 +1,6 @@
 package project.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.SoundClip;
@@ -38,5 +39,9 @@ public class DatabaseConnector {
 
     public SoundClip getSoundClip(String name) {
         return scService.findByName(name);
+    }
+
+    public List<SoundClip> searchSoundClips(String search) {
+        return scService.findAllLike(search);
     }
 }
