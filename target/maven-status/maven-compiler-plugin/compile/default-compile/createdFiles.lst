@@ -1,12 +1,10 @@
+project\controller\HomeController.class
 project\service\DatabaseConnector.class
 project\controller\ClipController.class
 project\service\SoundClipService.class
-project\service\WebGenerator.class
-project\persistence\entities\SoundClip.class
-project\persistence\repositories\SoundClipRepository.class
-project\SecurityConfig.class
-project\controller\HomeController.class
-project\controller\LoginController.class
 project\controller\UploadController.class
 project\service\Uploader.class
 project\Application.class
+project\service\WebGenerator.class
+project\persistence\entities\SoundClip.class
+project\persistence\repositories\SoundClipRepository.class

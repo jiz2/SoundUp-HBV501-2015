@@ -21,8 +21,8 @@
 				<button class="btn btn-primary" data-target="#viewBookings" data-toggle="modal" type="button">Sign in</button>
 				<button class="btn btn-primary" data-target="#viewDownloads" data-toggle="modal" type="button">Sign up</button>
 				-->
-				<a class="btn btn-primary" href="/registration" role="button">Sign in</a>
-				<a class="btn btn-primary" href="/logout" role="button">Sign out</a>
+				<a class="btn btn-primary" href="./user" role="button">Sign in</a>
+				<a class="btn btn-primary" href="./user" role="button">Sign out</a>
 			</div>
 			<form class="navbar-form" id="searchForm" name="searchForm" role="search">
 				<div class="form-group">
