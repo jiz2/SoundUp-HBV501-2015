@@ -2,9 +2,14 @@ C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\con
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\controller\UploadController.java
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\Application.java
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\controller\HomeController.java
-C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\persistence\repositories\SoundClipRepository.java
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\service\DatabaseConnector.java
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\service\SoundClipService.java
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\service\WebGenerator.java
-C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\persistence\entities\SoundClip.java
 C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\service\Uploader.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\persistence\repositories\SoundClipRepository.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\controller\UserController.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\persistence\entities\User.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\persistence\entities\SoundClip.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\service\UserRepositoryService.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\persistence\repositories\UserRepository.java
+C:\Users\Bjarki_2\Documents\GitHub\SoundUp-HBV501-2015\src\main\java\project\service\UserService.java
