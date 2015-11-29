@@ -20,11 +20,11 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.user}">
                             <label>
-                                <input id="private" name="private" type="checkbox"/>Private?
+                                <input id="private" name="private" type="checkbox" checked="false"/>Private?
                             </label>
                         </c:when>
                         <c:otherwise>
-                            <%--Nothing--%>
+                            <input name="private" type="checkbox" checked="false" hidden/>
                         </c:otherwise>
                     </c:choose>
 				</div>
