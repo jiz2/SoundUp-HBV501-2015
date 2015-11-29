@@ -20,7 +20,9 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.user}">
                             <label>
-                                <input id="private" name="private" type="checkbox" checked="false"/>Private?
+                                Private:
+                                <input name="private" type="radio" value="on" checked/>(Y/N)
+                                <input name="private" type="radio" value="off"/>
                             </label>
                         </c:when>
                         <c:otherwise>

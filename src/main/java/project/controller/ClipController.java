@@ -34,7 +34,7 @@ public class ClipController {
                        @PathVariable String name, @PathVariable String ext){
         boolean userFile = false;
 		try {
-			SoundClip sc = dbCon.getSoundClip(name,  ext);
+			SoundClip sc = dbCon.getSoundClip(name + "." + ext);
 
             model.addAttribute("name", sc.getName());
             model.addAttribute("ext", sc.getExt());

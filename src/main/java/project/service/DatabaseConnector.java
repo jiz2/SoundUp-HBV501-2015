@@ -64,8 +64,8 @@ public class DatabaseConnector {
      * @param name is name of the sound clip to be retrieved
      * @return the Sound clip
      */
-    public SoundClip getSoundClip(String name, String ext) {
-        return scService.findByNameAndExt(name, ext);
+    public SoundClip getSoundClip(String name) {
+        return scService.findByName(name);
     }
 
     /**

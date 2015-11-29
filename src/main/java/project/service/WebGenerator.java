@@ -16,7 +16,7 @@ public class WebGenerator {
      * @param filename name of the uploaded file
      * @return String that is the url
      */
-    public String makeUrl(String filename, String ext){
-    	return "/clip/" + filename + "." + ext;
+    public String makeUrl(String filename){
+    	return "/clip/" + filename;
     }
 }
