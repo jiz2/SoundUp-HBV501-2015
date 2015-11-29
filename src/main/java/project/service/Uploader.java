@@ -56,7 +56,7 @@ public class Uploader {
     * @param file Is the uploaded file
     * @return nothing
     */
-    public void upload(Model model, HttpSession session, MultipartFile file) throws Exception {
+    public void upload(Model model, HttpSession session, MultipartFile file, boolean isPrivate) throws Exception {
 
         // Make sure the file is valid
         String[] type = file.getContentType().split("/");
@@ -65,10 +65,9 @@ public class Uploader {
         // Store the file in the database
         try {
             User user = (User) session.getAttribute("user");
-            System.out.println(user);
-            System.out.println(user.getName());
+
             if (user != null) {
-                dbCon.setSoundClip(new UserSoundClip(user.getName(), name, type[1], file.getBytes()));
+                dbCon.setSoundClip(new UserSoundClip(user.getName(), name, type[1], file.getBytes(), isPrivate));
             } else {
                 dbCon.setSoundClip(new SoundClip(name, type[1], file.getBytes()));
             }
