@@ -7,6 +7,7 @@ import project.persistence.repositories.SoundClipRepository;
 
 import java.util.Collections;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SoundClipService {
@@ -79,9 +80,11 @@ public class SoundClipService {
 
     /**
      * Get all {@link SoundClip}s
+	 * @param term the term that we search for.
      * @return A list of {@link SoundClip}s
      */
+    @Transactional(readOnly=true)
     public List<SoundClip> findAllLike(String term) {
-        return repository.findAllLike(term);
+        return repository.findAllLike(term.toUpperCase());
     }
 }

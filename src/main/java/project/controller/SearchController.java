@@ -23,22 +23,28 @@ import project.service.Searcher;
 @Controller
 public class SearchController
 {
-	DatabaseConnector dbCon;
+	Searcher searcher;
 	
 	@Autowired
-	public SearchController(DatabaseConnector dbCon) {
-	   this.dbCon = dbCon;
+	public SearchController(Searcher searcher) {
+	   this.searcher = searcher;
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(Model model){
+		searcher.setSearchTerm("");
+		searcher.search(model);
+
+		return "Search";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String upload(Model model, @RequestParam("searchTerm") String searchTerm){
-		if (searchTerm.equals("")) {
-			model.addAttribute("errMsg", "Please type a search term into the search field");			
+	public String search(Model model, @RequestParam("term") String searchTerm){
+		if (!searchTerm.equals("")) {
+			searcher.setSearchTerm(searchTerm);
+			searcher.search(model);
 		} else {
-			List<SoundClip> results = dbCon.searchSoundClips(searchTerm);
-			// Now let's add the attributes to the model
-			model.addAttribute("searchTerm", searchTerm);
-			model.addAttribute("results", results.toArray());
+			model.addAttribute("errMsg", "Please type something into the search window.");
 		}
 
 		return "Search";
