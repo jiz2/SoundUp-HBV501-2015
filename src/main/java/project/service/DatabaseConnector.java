@@ -41,7 +41,7 @@ public class DatabaseConnector {
         return scService.findByName(name);
     }
 
-    public List<SoundClip> searchSoundClips(String search) {
+    public String searchSoundClips(String search) {
         return scService.findAllLike(search);
     }
 }

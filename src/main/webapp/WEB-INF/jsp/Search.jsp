@@ -8,16 +8,12 @@
     <div class="container">
 
         <div class="jumbotron">
-            <h1>Welcome to SoundUp</h1>
+            <h1>Results:</h1>
             <p>
-				This is just a demo of the final product.
+				This is what you searched for:
 			</p>
-            <form method="POST" enctype="multipart/form-data" action="/upload">
-				<div class="form-group">
-					<label for="sound">File to upload:</label>
-					<input id="sound" name="file" type="file">
-				</div>
-				<button type="submit" class="btn btn-primary">Upload</button>
+			<p>Search term: ${searchTerm}</p>
+			<%--<p>Results: ${results}</p>--%>
             </form>
         </div>
 
