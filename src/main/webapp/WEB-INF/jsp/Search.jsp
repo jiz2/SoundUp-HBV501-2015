@@ -1,27 +1,23 @@
 <!-- Fetch the layout -->
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- What title should be on this page? -->
-<t:layout su_title="Home">
+<t:layout su_title="Result">
+    <jsp:attribute name="su_content"><!-- Implement the su_content html block -->
 
-<jsp:attribute name="su_content"><!-- Implement the su_content html block -->
-    <div class="container">
+        <div class="container">
+            <div class="jumbotron">
 
-        <div class="jumbotron">
-            <h1>Welcome to SoundUp</h1>
-            <p>
-				This is just a demo of the final product.
-			</p>
-            <form method="POST" enctype="multipart/form-data" action="/upload">
-				<div class="form-group">
-					<label for="sound">File to upload:</label>
-					<input id="sound" name="file" type="file">
-				</div>
-				<button type="submit" class="btn btn-primary">Upload</button>
-            </form>
+                <h1>Search Page</h1>
+                <%--${requestScope['javax.servlet.forward.request_uri']}--%>
+				<ol>
+                    <c:forEach items="${results}" var="item">
+						<li><a href=item.link>${item.title)}</li>
+					</c:forEach>
+				</ol>
+            </div>
         </div>
 
-    </div>
-</jsp:attribute>
-
+    </jsp:attribute>
 </t:layout>

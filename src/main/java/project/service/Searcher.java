@@ -47,7 +47,7 @@ public class Searcher
 
         // Now let's add the attributes to the model
 		model.addAttribute("searchTerm", search);
-        model.addAttribute("results", results);
+        model.addAttribute("results", results.toArray());
 
         // Reset name
         search = new String();
