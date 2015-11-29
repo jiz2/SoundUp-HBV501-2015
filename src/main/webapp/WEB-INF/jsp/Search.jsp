@@ -8,7 +8,17 @@
     <div class="container">
 
         <div class="jumbotron">
-            hello
+            <h1>Welcome to SoundUp</h1>
+            <p>
+				This is just a demo of the final product.
+			</p>
+            <form method="POST" enctype="multipart/form-data" action="/upload">
+				<div class="form-group">
+					<label for="sound">File to upload:</label>
+					<input id="sound" name="file" type="file">
+				</div>
+				<button type="submit" class="btn btn-primary">Upload</button>
+            </form>
         </div>
 
     </div>
