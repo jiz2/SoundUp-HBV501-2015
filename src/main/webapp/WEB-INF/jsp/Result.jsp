@@ -13,8 +13,8 @@
                 <%--${requestScope['javax.servlet.forward.request_uri']}--%>
                 <c:choose>
                     <%--If Error has occured--%>
-                    <c:when test="${not empty errMsg}">
-                        <p>${errMsg}</p>
+                    <c:when test="${not empty err}">
+                        <p>${err}</p>
                     </c:when>
 
                     <%--File Testing--%>

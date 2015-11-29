@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -21,8 +22,18 @@
 				<button class="btn btn-primary" data-target="#viewBookings" data-toggle="modal" type="button">Sign in</button>
 				<button class="btn btn-primary" data-target="#viewDownloads" data-toggle="modal" type="button">Sign up</button>
 				-->
-				<a class="btn btn-primary" href="./user" role="button">Sign in</a>
-				<a class="btn btn-primary" href="./user" role="button">Sign out</a>
+				<c:choose>
+					<c:when test="${not empty sessionScope.user}">
+						<a class="btn btn-primary" href="#" role="button">
+							Logged in as ${sessionScope.user.name}
+						</a>
+						<a class="btn btn-primary" href="./logout" role="button">Sign out</a>
+					</c:when>
+					<c:otherwise>
+						<a class="btn btn-primary" href="./login" role="button">Sign in</a>
+						<a class="btn btn-primary" href="./register" role="button">Sign up</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<form class="navbar-form" id="searchForm" name="searchForm" role="search">
 				<div class="form-group">

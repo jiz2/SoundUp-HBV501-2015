@@ -41,10 +41,10 @@ public class UploadController {
 				// Let Uploader upload selected file
 				uploader.upload(model, file);
 			} catch (Exception e) {
-				model.addAttribute("errMsg", e.getMessage());
+				model.addAttribute("err", e.getMessage());
 			}
 		} else {
-			model.addAttribute("errMsg", "Please select a file for upload!");
+			model.addAttribute("err", "Please select a file for upload!");
 		}
 
 		// By adding attributes to the model, we can pass information from the controller

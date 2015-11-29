@@ -1,9 +1,10 @@
 package project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.SoundClip;
-import project.persistence.repositories.SoundClipRepository;
+import project.persistence.entities.User;
 
 /**
  * Service class that has methods for String Manipulation
@@ -16,27 +17,57 @@ public class DatabaseConnector {
 
     // Instance Variables
     SoundClipService scService;
+    UserRepositoryService urService;
 
     // Dependency Injection
     @Autowired
-    public DatabaseConnector(SoundClipService scService) {
+    public DatabaseConnector(SoundClipService scService, UserRepositoryService urService) {
         this.scService = scService;
+        this.urService = urService;
     }
 
     /**
      * Returns the string that is passed to the method with the First Character in Upper Case
+     * @param sc is the sound clip to be stored
      * @return String
      */
     public void setSoundClip(SoundClip sc) throws Exception {
         try {
             // Here needs to add sc to our database (SoundClipRepository)
             scService.store(sc);
-        } catch (org.hibernate.exception.ConstraintViolationException ce) {
+        } catch (ConstraintViolationException ce) {
             throw new Exception("A file already exists with the same name!");
         }
     }
 
+    /**
+     * Returns the string that is passed to the method with the First Character in Upper Case
+     * @param name is name of the sound clip to be retrieved
+     * @return the Sound clip
+     */
     public SoundClip getSoundClip(String name) {
         return scService.findByName(name);
+    }
+
+    /**
+     * Returns the string that is passed to the method with the First Character in Upper Case
+     * @return String
+     */
+    public void setUser(User user) throws Exception {
+        try {
+            // Here needs to add sc to our database (UserRepository)
+            urService.save(user);
+        } catch (ConstraintViolationException ce) {
+            System.out.println(ce.getMessage());
+            throw new Exception("A user already exists with the same name!");
+        }
+    }
+
+    /**
+     * Returns the user with the given name
+     * @return String
+     */
+    public User getUser(String name) {
+        return urService.findByName(name);
     }
 }
