@@ -1,7 +1,10 @@
 project\persistence\entities\User.class
+project\controller\SearchController.class
 project\service\DatabaseConnector.class
 project\controller\ClipController.class
 project\service\SoundClipService.class
+project\service\UserSoundClipService.class
+project\persistence\entities\UserSoundClip.class
 project\controller\UserController.class
 project\service\UserRepositoryService.class
 project\persistence\repositories\UserRepository.class
@@ -11,5 +14,6 @@ project\persistence\repositories\SoundClipRepository.class
 project\service\UserService.class
 project\controller\HomeController.class
 project\controller\UploadController.class
+project\persistence\repositories\UserSoundClipRepository.class
 project\service\Uploader.class
 project\Application.class

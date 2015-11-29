@@ -41,7 +41,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<form class="navbar-form" id="searchForm" name="searchForm" role="search" method="POST" action="/search">
+			<form class="navbar-form" method="POST" action="/search" id="searchForm" name="searchForm" role="search">
 				<div class="form-group">
 					<div class="input-group">
 						<%--<div class="input-group-btn">

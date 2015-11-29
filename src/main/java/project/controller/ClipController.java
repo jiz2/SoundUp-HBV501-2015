@@ -32,11 +32,9 @@ public class ClipController {
     @RequestMapping(value = "/clip/{name}.{ext}", method = RequestMethod.GET)
     public String clip(Model model, HttpSession session,
                        @PathVariable String name, @PathVariable String ext){
-
         boolean userFile = false;
-        try {
-            // Testing clip display
-            SoundClip sc = dbCon.getSoundClip(name+ "." + ext);
+		try {
+			SoundClip sc = dbCon.getSoundClip(name,  ext);
 
             model.addAttribute("name", sc.getName());
             model.addAttribute("ext", sc.getExt());

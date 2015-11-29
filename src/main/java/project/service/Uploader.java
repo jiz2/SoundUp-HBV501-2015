@@ -44,7 +44,7 @@ public class Uploader {
 
         // Throws Exception if file type is not accepted
         if (type.equalsIgnoreCase("audio")) {
-            this.name = name.replaceAll(" ", "_");
+            this.name = name.substring(0, name.lastIndexOf('.')).replaceAll(" ", "_");
         } else {
             throw new Exception("This file type is not accepted.");
         }
@@ -76,7 +76,7 @@ public class Uploader {
         }
 
         // Now let's add the attributes to the model
-        model.addAttribute("url", webgen.makeUrl(name));
+        model.addAttribute("url", webgen.makeUrl(name, type[1]));
 
         // Reset name
         name = new String();

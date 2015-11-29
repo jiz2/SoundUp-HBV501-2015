@@ -61,14 +61,6 @@ public class SoundClip {
     public void setData(byte[] data) {
         this.data = data;
     }
-	
-	public String getLink() {
-		return this.toString();
-	}
-	
-	public String getTitle() {
-		return this.toString();
-	}
 
     // This is for easier debug.
     @Override

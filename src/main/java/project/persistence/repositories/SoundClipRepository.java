@@ -30,8 +30,8 @@ public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
 
     SoundClip findOne(Long id);
 
-    List<SoundClip> findByName(String name);
+    List<SoundClip> findByNameAndExt(String name, String ext);
 	
-	@Query("SELECT s FROM SoundClip s WHERE s.name LIKE %:search%")
-	List<SoundClip> findAllLike(@Param("search") String search);
+	@Query("SELECT s FROM SoundClip s WHERE UPPER(s.name) LIKE %?1%")
+	List<SoundClip> findAllLike(String search);
 }

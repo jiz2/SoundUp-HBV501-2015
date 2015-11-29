@@ -29,13 +29,18 @@ public class SearchController
 	   this.dbCon = dbCon;
 	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(Model model){
+		model.addAttribute("errMsg", "Please type something into the search window.");
+		return "Search";
+	}
+
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String upload(Model model, @RequestParam("searchTerm") String searchTerm){
+	public String search(Model model, @RequestParam("searchTerm") String searchTerm){
 		if (searchTerm.equals("")) {
-			model.addAttribute("errMsg", "Please type a search term into the search field");			
+			model.addAttribute("errMsg", "Please type something into the search window.");
 		} else {
 			List<SoundClip> results = dbCon.searchSoundClips(searchTerm);
-			// Now let's add the attributes to the model
 			model.addAttribute("searchTerm", searchTerm);
 			model.addAttribute("results", results.toArray());
 		}
