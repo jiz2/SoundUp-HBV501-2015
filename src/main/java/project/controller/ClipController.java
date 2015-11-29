@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import project.persistence.entities.SoundClip;
+import project.persistence.entities.User;
 import project.persistence.entities.UserSoundClip;
 import project.service.DatabaseConnector;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Base64;
 
 @Controller
@@ -28,7 +30,8 @@ public class ClipController {
     }
 
     @RequestMapping(value = "/clip/{name}.{ext}", method = RequestMethod.GET)
-    public String clip(Model model, @PathVariable String name, @PathVariable String ext){
+    public String clip(Model model, HttpSession session,
+                       @PathVariable String name, @PathVariable String ext){
 
         boolean userFile = false;
         try {
@@ -46,10 +49,27 @@ public class ClipController {
                 // Testing user clip display
                 UserSoundClip sc = dbCon.getUserSoundClip(name + "." + ext);
 
-                model.addAttribute("user", sc.getUser());
-                model.addAttribute("name", sc.getName());
-                model.addAttribute("ext", sc.getExt());
-                model.addAttribute("data", Base64.getEncoder().encodeToString(sc.getData()));
+                // CHECK FOR PRIVATE CLIPS
+                if (sc.isPrivate()) {
+                    User user = (User) session.getAttribute("user");
+                    if (user != null) {
+                        if (user.getName().equals(sc.getUser())) {
+                            model.addAttribute("user", sc.getUser());
+                            model.addAttribute("name", sc.getName());
+                            model.addAttribute("ext", sc.getExt());
+                            model.addAttribute("data", Base64.getEncoder().encodeToString(sc.getData()));
+                        } else {
+                            model.addAttribute("err", "You art not authorized to see this file.");
+                        }
+                    } else {
+                        model.addAttribute("err", "You art not authorized to see this file.");
+                    }
+                } else {
+                    model.addAttribute("user", sc.getUser());
+                    model.addAttribute("name", sc.getName());
+                    model.addAttribute("ext", sc.getExt());
+                    model.addAttribute("data", Base64.getEncoder().encodeToString(sc.getData()));
+                }
             } catch (Exception e) {
                 model.addAttribute("err", "File not Found.");
             }

@@ -16,20 +16,22 @@ public class UserSoundClip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user;
+    private String usr;
     private String name;
     private String ext;
     private byte[] data;
+    private boolean isPrivate;
 
     // Database constructor
     public UserSoundClip() {
     }
 
-    public UserSoundClip(String user, String name, String ext, byte[] data) {
-        this.user = user;
+    public UserSoundClip(String user, String name, String ext, byte[] data, boolean isPrivate) {
+        this.usr = user;
         this.name = name;
         this.ext = ext;
         this.data = data;
+        this.isPrivate = isPrivate;
     }
 
     public Long getId() {
@@ -41,11 +43,11 @@ public class UserSoundClip {
     }
 
     public String getUser() {
-        return user;
+        return usr;
     }
 
     public void setUser(String user) {
-        this.name = user;
+        this.usr = user;
     }
 
     public String getName() {
@@ -70,6 +72,14 @@ public class UserSoundClip {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean isPrivate) {
+        this.isPrivate = isPrivate;
     }
 
     // This is for easier debug.

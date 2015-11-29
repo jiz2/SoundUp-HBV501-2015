@@ -36,11 +36,12 @@ public class UploadController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(Model model, @RequestParam("file") MultipartFile file, HttpSession session){
+	public String upload(Model model, @RequestParam("file") MultipartFile file,
+						 @RequestParam("private") boolean isPrivate, HttpSession session){
 		if (!file.isEmpty()) {
 			try {
 				// Let Uploader upload selected file
-				uploader.upload(model, session, file);
+				uploader.upload(model, session, file, isPrivate);
 			} catch (Exception e) {
 				model.addAttribute("err", e.getMessage());
 			}
