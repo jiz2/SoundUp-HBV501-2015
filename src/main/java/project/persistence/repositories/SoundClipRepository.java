@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import project.persistence.entities.SoundClip;
 
 import java.util.List;
+import org.springframework.data.repository.query.Param;
 
 /**
  * By extending the {@link JpaRepository} we have access to powerful methods.
@@ -30,4 +31,7 @@ public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
     SoundClip findOne(Long id);
 
     List<SoundClip> findByName(String name);
+	
+	@Query("SELECT s FROM SoundClip s WHERE s.name LIKE %:search%")
+	List<SoundClip> findAllLike(@Param("search") String search);
 }

@@ -110,4 +110,4 @@ local.properties
 *.jar.original
 *.netbeans_automatic_build
 
-target/
+target/*

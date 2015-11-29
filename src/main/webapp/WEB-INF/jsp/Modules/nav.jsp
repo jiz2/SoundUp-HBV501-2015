@@ -35,7 +35,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<form class="navbar-form" id="searchForm" name="searchForm" role="search">
+			<form class="navbar-form" id="searchForm" name="searchForm" role="search" method="POST" action="/search">
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-btn">
@@ -54,7 +54,7 @@
 								</li>
 							</ul>
 						</div>
-						<input autofocus="" class="form-control" id="searchInput" name="srch-term" placeholder="Search" type="text">
+						<input autofocus="" class="form-control" id="searchInput" name="searchTerm" placeholder="Search" type="text">
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-search"></span>
 						</span>

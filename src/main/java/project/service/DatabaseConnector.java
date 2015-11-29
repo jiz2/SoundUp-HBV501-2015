@@ -1,5 +1,6 @@
 package project.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
@@ -96,5 +97,9 @@ public class DatabaseConnector {
      */
     public User getUser(String name) {
         return urService.findByName(name);
+	}
+	
+    public List<SoundClip> searchSoundClips(String search) {
+        return scService.findAllLike(search);
     }
 }

@@ -76,4 +76,12 @@ public class SoundClipService {
     public SoundClip findByName(String name) {
         return repository.findByName(name).get(0);
     }
+
+    /**
+     * Get all {@link SoundClip}s
+     * @return A list of {@link SoundClip}s
+     */
+    public List<SoundClip> findAllLike(String term) {
+        return repository.findAllLike(term);
+    }
 }
