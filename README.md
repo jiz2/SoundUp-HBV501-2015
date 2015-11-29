@@ -18,5 +18,7 @@ which consists of
 6. Enjoy! 
 ---
 
+We are proud to say that all of our use cases were fulfilled but given more time, 
+we would've had the chance to increase the quality of the features and add more of them.
+We hope you like what we ended up with! :)
 
-[ ](skottan.com)

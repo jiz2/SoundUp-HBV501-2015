@@ -7,6 +7,13 @@
 			</div>
 			<div class="modal-body">
 				<p>This project is about making a sound uploading service.</p>
+				<p> Made by these manly gentlemen:</p>
+				<ul>
+					<li>Bjarki Hall,                 kt: 070693-2169 (<a href="mailto:bjh27@hi.is">bjh27@hi.is</a>)</li>
+					<li>Daníel Adolfsson,            kt: 240991-2099 (<a href="mailto:daa11@hi.is">daa11@hi.is</a>)</li>
+					<li>Jianfei Zheng,               kt: 300994-3699 (<a href="mailto:jiz2@hi.is">jiz2@hi.is</a>)</li>
+					<li>Ríkharður Bjarni Einarsson,  kt: 170496-3379 (<a href="mailto:rbe3@hi.is">rbe3@hi.is</a>)</li>
+				</ul>
 			</div>
 			<div class="modal-footer">
 				<button aria-label="Close" class="btn btn-default" data-dismiss="modal"
@@ -16,6 +23,7 @@
 	</div>
 </div>
 
+<%--
 <div class="modal fade" id="advancedSearch">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -77,3 +85,4 @@
 		</div>
 	</div>
 </div>
+--%>

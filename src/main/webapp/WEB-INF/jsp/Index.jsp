@@ -11,7 +11,7 @@
         <div class="jumbotron">
             <h1>Welcome to SoundUp</h1>
             <p>
-				This is just a demo of the final product.
+				Pick a file from your computer (up to 10MB) and access it from anywhere!
 			</p>
             <form method="POST" enctype="multipart/form-data" action="/upload">
 				<div class="form-group">
