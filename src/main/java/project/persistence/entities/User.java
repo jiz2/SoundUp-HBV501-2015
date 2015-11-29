@@ -56,7 +56,7 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "Sound Clip[name=%s, hash=%s]",
+                "User[name=%s, hash=%s]",
                 name, hash
         );
     }

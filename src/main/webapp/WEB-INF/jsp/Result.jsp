@@ -20,6 +20,11 @@
                     <%--File Testing--%>
                     <c:when test="${not empty name}">
                         <p>Filename: ${name}</p>
+                        <c:choose>
+                            <c:when test="${not empty user}">
+                                <p>Uploader: ${user}</p>
+                            </c:when>
+                        </c:choose>
                         <audio controls autoplay="true" loop="false"> 
 							<source src="data:audio/${ext};base64,${data}">
 						</audio>

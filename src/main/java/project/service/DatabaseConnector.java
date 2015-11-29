@@ -5,6 +5,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.SoundClip;
 import project.persistence.entities.User;
+import project.persistence.entities.UserSoundClip;
 
 /**
  * Service class that has methods for String Manipulation
@@ -17,12 +18,15 @@ public class DatabaseConnector {
 
     // Instance Variables
     SoundClipService scService;
+    UserSoundClipService uscService;
     UserRepositoryService urService;
 
     // Dependency Injection
     @Autowired
-    public DatabaseConnector(SoundClipService scService, UserRepositoryService urService) {
+    public DatabaseConnector(SoundClipService scService,
+                             UserSoundClipService uscService, UserRepositoryService urService) {
         this.scService = scService;
+        this.uscService = uscService;
         this.urService = urService;
     }
 
@@ -42,11 +46,34 @@ public class DatabaseConnector {
 
     /**
      * Returns the string that is passed to the method with the First Character in Upper Case
+     * @param usc is the sound clip to be stored
+     * @return String
+     */
+    public void setSoundClip(UserSoundClip usc) throws Exception {
+        try {
+            // Here needs to add sc to our database (SoundClipRepository)
+            uscService.store(usc);
+        } catch (ConstraintViolationException ce) {
+            throw new Exception("A file already exists with the same name!");
+        }
+    }
+
+    /**
+     * Returns the string that is passed to the method with the First Character in Upper Case
      * @param name is name of the sound clip to be retrieved
      * @return the Sound clip
      */
     public SoundClip getSoundClip(String name) {
         return scService.findByName(name);
+    }
+
+    /**
+     * Returns the string that is passed to the method with the First Character in Upper Case
+     * @param name is name of the sound clip to be retrieved
+     * @return the Sound clip
+     */
+    public UserSoundClip getUserSoundClip(String name) {
+        return uscService.findByName(name);
     }
 
     /**

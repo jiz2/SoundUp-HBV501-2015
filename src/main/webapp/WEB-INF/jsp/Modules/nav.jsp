@@ -27,11 +27,11 @@
 						<a class="btn btn-primary" href="#" role="button">
 							Logged in as ${sessionScope.user.name}
 						</a>
-						<a class="btn btn-primary" href="./logout" role="button">Sign out</a>
+						<a class="btn btn-primary" href="/logout" role="button">Sign out</a>
 					</c:when>
 					<c:otherwise>
-						<a class="btn btn-primary" href="./login" role="button">Sign in</a>
-						<a class="btn btn-primary" href="./register" role="button">Sign up</a>
+						<a class="btn btn-primary" href="/login" role="button">Sign in</a>
+						<a class="btn btn-primary" href="/register" role="button">Sign up</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

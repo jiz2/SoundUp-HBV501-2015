@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import project.service.Uploader;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UploadController {
 
@@ -35,11 +37,11 @@ public class UploadController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(Model model, @RequestParam("file") MultipartFile file){
+	public String upload(Model model, @RequestParam("file") MultipartFile file, HttpSession session){
 		if (!file.isEmpty()) {
 			try {
 				// Let Uploader upload selected file
-				uploader.upload(model, file);
+				uploader.upload(model, session, file);
 			} catch (Exception e) {
 				model.addAttribute("err", e.getMessage());
 			}

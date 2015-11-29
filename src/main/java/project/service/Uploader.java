@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import project.persistence.entities.SoundClip;
+import project.persistence.entities.User;
+import project.persistence.entities.UserSoundClip;
 import project.service.WebGenerator;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -53,7 +56,7 @@ public class Uploader {
     * @param file Is the uploaded file
     * @return nothing
     */
-    public void upload(Model model, MultipartFile file) throws Exception {
+    public void upload(Model model, HttpSession session, MultipartFile file) throws Exception {
 
         // Make sure the file is valid
         String[] type = file.getContentType().split("/");
@@ -61,7 +64,14 @@ public class Uploader {
 
         // Store the file in the database
         try {
-            dbCon.setSoundClip(new SoundClip(name, type[1], file.getBytes()));
+            User user = (User) session.getAttribute("user");
+            System.out.println(user);
+            System.out.println(user.getName());
+            if (user != null) {
+                dbCon.setSoundClip(new UserSoundClip(user.getName(), name, type[1], file.getBytes()));
+            } else {
+                dbCon.setSoundClip(new SoundClip(name, type[1], file.getBytes()));
+            }
         } catch (IOException ioe) {
             throw new Exception("Failed to upload the file. Please try again.");
         }

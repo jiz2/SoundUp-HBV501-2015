@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import project.persistence.entities.SoundClip;
+import project.persistence.entities.UserSoundClip;
 import project.service.DatabaseConnector;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ public class ClipController {
     @RequestMapping(value = "/clip/{name}.{ext}", method = RequestMethod.GET)
     public String clip(Model model, @PathVariable String name, @PathVariable String ext){
 
+        boolean userFile = false;
         try {
             // Testing clip display
             SoundClip sc = dbCon.getSoundClip(name+ "." + ext);
@@ -37,7 +39,20 @@ public class ClipController {
             model.addAttribute("ext", sc.getExt());
             model.addAttribute("data", Base64.getEncoder().encodeToString(sc.getData()));
         } catch (Exception e) {
-            model.addAttribute("err", "File not Found.");
+            userFile = true;
+        }
+        if (userFile) {
+            try {
+                // Testing user clip display
+                UserSoundClip sc = dbCon.getUserSoundClip(name + "." + ext);
+
+                model.addAttribute("user", sc.getUser());
+                model.addAttribute("name", sc.getName());
+                model.addAttribute("ext", sc.getExt());
+                model.addAttribute("data", Base64.getEncoder().encodeToString(sc.getData()));
+            } catch (Exception e) {
+                model.addAttribute("err", "File not Found.");
+            }
         }
 
         // By adding attributes to the model, we can pass information from the controller
