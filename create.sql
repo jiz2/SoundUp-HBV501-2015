@@ -14,9 +14,10 @@ CREATE TABLE usersoundclip
   name character varying(255),
   data bytea NOT NULL,
   ext character varying(10) NOT NULL,
-  "user" character varying(255) NOT NULL,
+  usr character varying(255) NOT NULL,
+  private boolean NOT NULL DEFAULT false,
   CONSTRAINT usc_pkey PRIMARY KEY (id),
-  CONSTRAINT usc_user_fkey FOREIGN KEY ("user")
+  CONSTRAINT usc_user_fkey FOREIGN KEY (usr)
       REFERENCES users (name) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT usc_name_unique UNIQUE (name)
