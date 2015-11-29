@@ -5,15 +5,14 @@
  */
 package project.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import project.persistence.entities.SoundClip;
-import project.service.DatabaseConnector;;
+import org.springframework.web.multipart.MultipartFile;
+import project.service.Searcher;
 
 /**
  *
@@ -22,24 +21,22 @@ import project.service.DatabaseConnector;;
 @Controller
 public class SearchController
 {
-	DatabaseConnector dbCon;
-
+	Searcher searcher;
+	
 	@Autowired
-	public SearchController(DatabaseConnector dbCon) {
-		this.dbCon = dbCon;
+	public SearchController(Searcher searcher) {
+	   this.searcher = searcher;
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String upload(Model model, @RequestParam("srch-term") String searchTerm){
-		
-		if (searchTerm.equals("")) {
-			model.addAttribute("errMsg", "We couldn't find anything!");
+	public String upload(Model model, @RequestParam("searchTerm") String searchTerm){
+		if (!searchTerm.equals("")) {
+			searcher.setSearchTerm(searchTerm);
+			searcher.search(model);
 		} else {
-			String results = dbCon.searchSoundClips(searchTerm);
-			model.addAttribute("searchTerm", searchTerm);
-			model.addAttribute("results", results);
+			model.addAttribute("errMsg", "Please type a search term into the search field");
 		}
-		
+
 		return "Search";
 	}
 }

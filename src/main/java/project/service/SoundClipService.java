@@ -81,7 +81,7 @@ public class SoundClipService {
      * Get all {@link SoundClip}s
      * @return A list of {@link SoundClip}s
      */
-    public String findAllLike(String term) {
+    public List<SoundClip> findAllLike(String term) {
         return repository.findAllLike(term);
     }
 }

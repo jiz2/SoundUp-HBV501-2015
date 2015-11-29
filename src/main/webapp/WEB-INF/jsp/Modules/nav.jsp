@@ -24,7 +24,7 @@
 				<a class="btn btn-primary" href="./user" role="button">Sign in</a>
 				<a class="btn btn-primary" href="./user" role="button">Sign out</a>
 			</div>
-			<form class="navbar-form" id="searchForm" name="searchForm" role="search" method="GET" action="/search">
+			<form class="navbar-form" id="searchForm" name="searchForm" role="search">
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-btn">

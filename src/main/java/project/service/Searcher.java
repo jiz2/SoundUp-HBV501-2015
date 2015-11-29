@@ -43,7 +43,13 @@ public class Searcher
     * @return nothing
     */
     public void search(Model model) {
-		//List<SoundClip> results = dbCon.searchSoundClips(search);
-		//return results;
+		List<SoundClip> results = dbCon.searchSoundClips(search);
+
+        // Now let's add the attributes to the model
+		model.addAttribute("searchTerm", search);
+        model.addAttribute("results", results);
+
+        // Reset name
+        search = new String();
     }
 }
