@@ -14,9 +14,15 @@
 		<div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-left btn-group">
 				<li>
-					<a data-target="#advancedSearch" data-toggle="modal" href="#" type="button">Advanced</a>
+					<a data-target="#aboutProject" data-toggle="modal" href="#" type="button">About</a>
 				</li>
 			</ul>
+			<%--
+			<ul class="nav navbar-nav navbar-left btn-group">
+				<li>
+					<a data-target="#advancedSearch" data-toggle="modal" href="#" type="button">Advanced</a>
+				</li>
+			</ul>--%>
 			<div class="navbar-form navbar-right btn-group">
 				<!--
 				<button class="btn btn-primary" data-target="#viewBookings" data-toggle="modal" type="button">Sign in</button>
@@ -38,7 +44,7 @@
 			<form class="navbar-form" id="searchForm" name="searchForm" role="search" method="POST" action="/search">
 				<div class="form-group">
 					<div class="input-group">
-						<div class="input-group-btn">
+						<%--<div class="input-group-btn">
 							<button aria-expanded="false" class="btn btn-default dropdown-toggle"data-toggle="dropdown" type="button">
 								All <span class="caret"></span>
 							</button>
@@ -53,7 +59,7 @@
 									<a href="#">TV program</a>
 								</li>
 							</ul>
-						</div>
+						</div>--%>
 						<input autofocus="" class="form-control" id="searchInput" name="searchTerm" placeholder="Search" type="text">
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-search"></span>
