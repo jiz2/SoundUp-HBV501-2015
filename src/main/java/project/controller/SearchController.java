@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.SoundClip;
 import project.service.DatabaseConnector;
-import project.service.Searcher;
 
 /**
  *
