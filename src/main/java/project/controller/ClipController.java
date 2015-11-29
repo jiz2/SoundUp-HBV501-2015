@@ -27,7 +27,7 @@ public class ClipController {
     public String clip(Model model, @PathVariable String name, @PathVariable String ext){
 
         // Testing clip display
-        SoundClip sc = dbCon.getSoundClip(name+ "." + ext);
+        SoundClip sc = dbCon.getSoundClip(name,  ext);
 
         model.addAttribute("name", sc.getName());
         model.addAttribute("ext", sc.getExt());

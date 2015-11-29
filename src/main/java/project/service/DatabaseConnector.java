@@ -37,8 +37,8 @@ public class DatabaseConnector {
         }
     }
 
-    public SoundClip getSoundClip(String name) {
-        return scService.findByName(name);
+    public SoundClip getSoundClip(String name, String ext) {
+        return scService.findByNameAndExt(name, ext);
     }
 
     public List<SoundClip> searchSoundClips(String search) {
