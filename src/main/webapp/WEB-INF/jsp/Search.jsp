@@ -10,10 +10,11 @@
             <div class="jumbotron">
 
                 <h1>Search Page</h1>
+				<p>Search results for: ${searchTerm}</p>
                 <%--${requestScope['javax.servlet.forward.request_uri']}--%>
 				<ol>
-                    <c:forEach items="${results}" var="item">
-						<li><a href=item.link>${item.title)}</li>
+                    <c:forEach var="entry" items="${results}">
+						<li><a href="clip/${entry.getName()}">${entry.getName()}</a></li>
 					</c:forEach>
 				</ol>
             </div>
