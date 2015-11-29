@@ -1,3 +1,12 @@
+CREATE TABLE users
+(
+  id bigserial NOT NULL,
+  name character varying(255) NOT NULL,
+  hash character varying(255) NOT NULL,
+  CONSTRAINT users_pkey PRIMARY KEY (id),
+  CONSTRAINT users_name_unique UNIQUE (name)
+);
+
 CREATE TABLE soundclip
 (
   id bigserial NOT NULL,
@@ -21,15 +30,6 @@ CREATE TABLE usersoundclip
       REFERENCES users (name) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT usc_name_unique UNIQUE (name)
-);
-
-CREATE TABLE users
-(
-  id bigserial NOT NULL,
-  name character varying(255) NOT NULL,
-  hash character varying(255) NOT NULL,
-  CONSTRAINT users_pkey PRIMARY KEY (id),
-  CONSTRAINT users_name_unique UNIQUE (name)
 );
 
 CREATE ROLE soundup LOGIN
