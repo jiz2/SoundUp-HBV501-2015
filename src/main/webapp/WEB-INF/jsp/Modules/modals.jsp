@@ -7,12 +7,12 @@
 			</div>
 			<div class="modal-body">
 				<p>This project is about making a sound uploading service.</p>
-				<p> Made by these manly gentlemen:</p>
+				<p>Made by:</p>
 				<ul>
 					<li>Bjarki Hall,                 kt: 070693-2169 (<a href="mailto:bjh27@hi.is">bjh27@hi.is</a>)</li>
-					<li>Daníel Adolfsson,            kt: 240991-2099 (<a href="mailto:daa11@hi.is">daa11@hi.is</a>)</li>
+					<li>DanÃ­el Adolfsson,            kt: 240991-2099 (<a href="mailto:daa11@hi.is">daa11@hi.is</a>)</li>
 					<li>Jianfei Zheng,               kt: 300994-3699 (<a href="mailto:jiz2@hi.is">jiz2@hi.is</a>)</li>
-					<li>Ríkharður Bjarni Einarsson,  kt: 170496-3379 (<a href="mailto:rbe3@hi.is">rbe3@hi.is</a>)</li>
+					<li>RÃ­kharÃ°ur Bjarni Einarsson,  kt: 170496-3379 (<a href="mailto:rbe3@hi.is">rbe3@hi.is</a>)</li>
 				</ul>
 			</div>
 			<div class="modal-footer">
@@ -37,31 +37,31 @@
 						<div class="col-sm-10">
 							<select class="form-control" id="stations" name="stations">
 								<option value="ruv">
-									Rúv
+									Rï¿½v
 								</option>
 								<option value="ruvithrottir">
-									Rúv-íþróttir
+									Rï¿½v-ï¿½ï¿½rï¿½ttir
 								</option>
 								<option value="stod2">
-									Stöð2
+									Stï¿½ï¿½2
 								</option>
 								<option value="stod2sport">
-									Stöð2-sport
+									Stï¿½ï¿½2-sport
 								</option>
 								<option value="stod2sport2">
-									Stöð2-sport2
+									Stï¿½ï¿½2-sport2
 								</option>
 								<option value="stod2gull">
-									Stöð2-gull
+									Stï¿½ï¿½2-gull
 								</option>
 								<option value="stod2bio">
-									Stöð2-bio
+									Stï¿½ï¿½2-bio
 								</option>
 								<option value="stod3">
-									Stöð3
+									Stï¿½ï¿½3
 								</option>
 								<option value="skjar1">
-									Skjár1
+									Skjï¿½r1
 								</option>
 							</select>
 						</div>
