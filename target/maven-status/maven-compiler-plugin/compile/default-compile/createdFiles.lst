@@ -4,7 +4,9 @@ project\controller\IndexController.class
 project\controller\UserController.class
 project\controller\SoundClipController.class
 project\persistence\repositories\UserRepository.class
-project\Application.class
 project\persistence\entities\SoundClip.class
 project\persistence\repositories\SoundClipRepository.class
 project\service\UserService.class
+project\controller\UserRestController.class
+project\controller\SoundClipRestController.class
+project\Application.class

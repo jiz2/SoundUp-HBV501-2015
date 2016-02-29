@@ -1,5 +1,6 @@
 package project.controller;
 
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -60,6 +61,5 @@ public class SoundClipRestController {
 			scList = new ArrayList<SoundClip>(scList);
 			return new Gson().toJson(scList);
 		}
-		return "SoundClip";
 	}
 }
