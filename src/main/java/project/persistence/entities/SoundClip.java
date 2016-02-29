@@ -2,36 +2,32 @@ package project.persistence.entities;
 
 import javax.persistence.*;
 
-/**
- * The class for the Sound Clip itself.
- * The system generates a table schema based on this class for this entity.
- * Be sure to annotate any entities you have with the @Entity annotation.
- */
 @Entity
-@Table(name = "soundclip") // If you want to specify a table name, you can do so here
+@Table(name = "Soundclips")
 public class SoundClip {
 
-    // Declare that this attribute is the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String ext;
-    private byte[] data;
+    private byte[] binaryStr;
+	private String url;
+	private boolean isPrivate;
 
-    // Database constructor
     public SoundClip() {
     }
 
-    public SoundClip(String name, String ext, byte[] data) {
+    public SoundClip(String name, String ext, byte[] binaryStr, String url, boolean isPrivate) {
         this.name = name;
         this.ext = ext;
-        this.data = data;
+        this.binaryStr = binaryStr;
+		this.url = url;
+		this.isPrivate = isPrivate;
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -39,7 +35,7 @@ public class SoundClip {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -47,27 +43,46 @@ public class SoundClip {
     }
 
     public String getExt() {
-        return ext;
+        return this.ext;
     }
 
-    public void setExt(String name) {
+    public void setExt(String ext) {
         this.ext = ext;
     }
 
-    public byte[] getData() {
-        return data;
+    public byte[] getBinaryStr() {
+        return this.binaryStr;
     }
 
-    public void setData(byte[] data) {
-        this.data = data;
+    public void setBinaryStr(byte[] binaryStr) {
+        this.binaryStr = binaryStr;
     }
+
+	public String getUrl() {
+        return this.url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }	
+	public boolean getIsPrivate() {
+		return this.isPrivate;
+	}
+	
+	public void setIsPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
+	
+	public String getBase64Str(){
+		return java.util.Base64.getEncoder().encodeToString(this.getBinaryStr());
+	}
 
     // This is for easier debug.
     @Override
     public String toString() {
         return String.format(
-                "Sound Clip[name=%s, data=%s]",
-                name, new String(data)
+                "Sound Clip[name=%s, binaryStr=%s]",
+                name, new String(binaryStr)
         );
     }
 }

@@ -2,30 +2,21 @@ package project.persistence.entities;
 
 import javax.persistence.*;
 
-/**
- * The class for the User itself.
- * The system generates a table schema based on this class for this entity.
- * Be sure to annotate any entities you have with the @Entity annotation.
- */
 @Entity
-@Table(name = "users") // If you want to specify a table name, you can do so here
+@Table(name = "Users")
 public class User {
-
-    // Declare that this attribute is the id
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-    private String hash;
+    private String pw;
 
-    // Database constructor
     public User() {
     }
 
     public User(String name, String hash) {
         this.name = name;
-        this.hash = hash;
+        this.pw = hash;
     }
 
     public Long getId() {
@@ -44,20 +35,20 @@ public class User {
         this.name = name;
     }
 
-    public String getHash() {
-        return hash;
+    public String getPw() {
+        return pw;
     }
 
-    public void setHash(String name) {
-        this.hash = hash;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 
     // This is for easier debug.
     @Override
     public String toString() {
         return String.format(
-                "User[name=%s, hash=%s]",
-                name, hash
+                "User[name=%s, pw=%s]",
+                name, pw
         );
     }
 }

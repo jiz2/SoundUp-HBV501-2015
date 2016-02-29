@@ -29,19 +29,19 @@
 				<button class="btn btn-primary" data-target="#viewDownloads" data-toggle="modal" type="button">Sign up</button>
 				-->
 				<c:choose>
-					<c:when test="${not empty sessionScope.user}">
-						<a class="btn btn-primary" href="#" role="button">
-							Logged in as ${sessionScope.user.name}
+					<c:when test="${not empty user}">
+						<a class="btn btn-primary" href="/user/login" role="button">
+							Logged in as ${user.getName()}
 						</a>
-						<a class="btn btn-primary" href="/logout" role="button">Sign out</a>
+						<a class="btn btn-primary" href="/user/logout" role="button">Sign out</a>
 					</c:when>
 					<c:otherwise>
-						<a class="btn btn-primary" href="/login" role="button">Sign in</a>
-						<a class="btn btn-primary" href="/register" role="button">Sign up</a>
+						<a class="btn btn-primary" href="/user/login" role="button">Sign in</a>
+						<a class="btn btn-primary" href="/user/register" role="button">Sign up</a>
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<form class="navbar-form" method="POST" action="/search" id="searchForm" name="searchForm" role="search">
+			<form class="navbar-form" method="GET" action="/soundclip/search" id="searchForm" name="searchForm" role="search">
 				<div class="form-group">
 					<div class="input-group">
 						<%--<div class="input-group-btn">
@@ -60,7 +60,7 @@
 								</li>
 							</ul>
 						</div>--%>
-						<input autofocus="" class="form-control" id="searchInput" name="searchTerm" placeholder="Search" type="text">
+						<input autofocus="" class="form-control" id="searchInput" name="searchTerm" placeholder="Search" type="text" required="">
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-search"></span>
 						</span>

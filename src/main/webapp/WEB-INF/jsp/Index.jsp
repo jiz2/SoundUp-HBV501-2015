@@ -1,40 +1,33 @@
-<!-- Fetch the layout -->
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!-- What title should be on this page? -->
-<t:layout su_title="Home">
-
-<jsp:attribute name="su_content"><!-- Implement the su_content html block -->
-    <div class="container">
-
-        <div class="jumbotron">
-            <h1>Welcome to SoundUp</h1>
-            <p>
-				Pick a file from your computer (up to 10MB) and access it from anywhere!
-			</p>
-            <form method="POST" enctype="multipart/form-data" action="/upload">
-				<div class="form-group">
-					<label for="sound">File to upload:</label>
-					<input id="sound" name="file" type="file">
-                    <c:choose>
-                        <c:when test="${not empty sessionScope.user}">
-                            <label>
-                                Private:
-                                <input name="private" type="radio" value="on" checked/>(Y/N)
-                                <input name="private" type="radio" value="off"/>
-                            </label>
-                        </c:when>
-                        <c:otherwise>
-                            <input name="private" type="checkbox" checked="false" hidden/>
-                        </c:otherwise>
-                    </c:choose>
-				</div>
-				<button type="submit" class="btn btn-primary">Upload</button>
-            </form>
-        </div>
-
-    </div>
+<t:layout su_title="Home" su_header="Welcome to SoundUp">
+<jsp:attribute name="su_content">
+	<p>
+		Pick a file from your computer and access it from anywhere!
+	</p>
+	<form method="POST" enctype="multipart/form-data" action="/soundclip/upload">
+		<div class="form-group">
+			<label for="sound">File to upload (up to 10MB):</label>
+			<!--Max 10MB, could validate with js plugin client side-->
+			<input id="sound" name="file" type="file" accept="audio/*">
+			<c:choose>
+				<c:when test="${not empty sessionScope.user}">
+					<br>
+					<label>Do you want your file to be private?
+						<div class="radio">
+							<label><input type="radio" name="private" value="on">Yes</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="private" value="off">No</label>
+						</div>
+					</label>
+				</c:when>
+				<c:otherwise>
+					<input name="private" type="checkbox" checked="false" hidden/>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<button type="submit" class="btn btn-primary">Upload</button>
+	</form>
 </jsp:attribute>
-
 </t:layout>

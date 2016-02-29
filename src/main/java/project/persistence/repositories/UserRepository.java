@@ -13,20 +13,6 @@ import java.util.List;
  *
  */
 public interface UserRepository extends JpaRepository<User, Long> {
-
     User save(User user);
-
-    void delete(User user);
-
-    List<User> findAll();
-
-    // Instead of the method findAllReverseOrder() in SoundClipService.java,
-    // We could have used this method by adding the words
-    // ByOrderByIdDesc, which mean: Order By Id in a Descending order
-    //
-    List<User> findAllByOrderByIdDesc();
-
-    User findOne(Long id);
-
-    List<User> findByName(String name);
+	List<User> findByName(String name);
 }

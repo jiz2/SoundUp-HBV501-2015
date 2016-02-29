@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<%@tag description="Simple Template" pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ tag description="Simple Template" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
- 
-<!-- We need to declare blocks, su_ is a prefix that stands for SoundUp -->
 <%@attribute name="su_title"%>
+<%@attribute name="su_header"%>
 <%@attribute name="su_content" fragment="true" %>
  
 <html lang="en">
 	<head>
-		<title>SoundUp - ${su_title}</title><!-- su_title is a variable which will be declared on each page -->
+		<title>SoundUp - ${su_title}</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta content="A meta search engine for entertainment programs." name=
@@ -22,7 +19,12 @@
 		<div class="wrapper">
 			<jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/Modules/modals.jsp"/>
 			<jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/Modules/nav.jsp"/>
-			<jsp:invoke fragment="su_content"/> <!--Invoke/block example-->
+			<div class="container">
+				<div class="jumbotron">
+					<h1>${su_header}</h1>
+					<jsp:invoke fragment="su_content"/>
+				</div>
+			</div>
 		</div>
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

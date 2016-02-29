@@ -1,90 +1,55 @@
 package project.service;
 
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.SoundClip;
 import project.persistence.repositories.SoundClipRepository;
 
-import java.util.Collections;
 import java.util.List;
+import static java.util.UUID.randomUUID;
+import javax.servlet.http.HttpSession;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class SoundClipService {
+    SoundClipRepository scRepo;
 
-    // Instance Variables
-    SoundClipRepository repository;
-
-    // Dependency Injection
     @Autowired
-    public SoundClipService(SoundClipRepository repository) {
-        this.repository = repository;
+    public SoundClipService(SoundClipRepository scRepo) {
+        this.scRepo = scRepo;
     }
 
-    /**
-     * Save a {@link SoundClip}
-     * @param soundClip {@link SoundClip} to be saved
-     * @return {@link SoundClip} that was saved
-     */
-    public SoundClip store(SoundClip soundClip) {
-        return repository.save(soundClip);
+	@Transactional(readOnly=true)
+    public SoundClip findByUrl(String name) {
+        return this.scRepo.findByUrl(name);
     }
 
-    /**
-     * Delete {@link SoundClip}
-     * @param soundClip {@link SoundClip} to be deleted
-     */
-    public void delete(SoundClip soundClip) {
-        repository.delete(soundClip);
-    }
-
-    /**
-     * Get all {@link SoundClip}s
-     * @return A list of {@link SoundClip}s
-     */
-    public List<SoundClip> findAll() {
-        return repository.findAll();
-    }
-
-    /**
-     * Get all {@link SoundClip}s in a reverse order
-     * @return A reversed list of {@link SoundClip}s
-     */
-    public List<SoundClip> findAllReverseOrder() {
-        // Get all the Postit notes
-        List<SoundClip> soundClips = repository.findAll();
-
-        // Reverse the list
-        Collections.reverse(soundClips);
-
-        return soundClips;
-    }
-
-    /**
-     * Find a {@link SoundClip} based on {@link Long id}
-     * @param id {@link Long}
-     * @return A {@link SoundClip} with {@link Long id}
-     */
-    public SoundClip findOne(Long id) {
-        return repository.findOne(id);
-    }
-
-    /**
-     * Find all {@link SoundClip}s with {@link String name}
-     * @param name {@link String}
-     * @return All {@link SoundClip}s with the {@link String name} passed
-     */
-    public SoundClip findByName(String name) {
-        return repository.findByName(name).get(0);
-    }
-
-    /**
-     * Get all {@link SoundClip}s
-	 * @param term the term that we search for.
-     * @return A list of {@link SoundClip}s
-     */
     @Transactional(readOnly=true)
-    public List<SoundClip> findAllLike(String term) {
-        return repository.findAllLike(term.toUpperCase());
+    public List<SoundClip> findAllLike(String searchTerm) {
+        return this.scRepo.findAllLike(searchTerm.toUpperCase());
+    }
+	
+	public String upload(Model model, HttpSession session, MultipartFile file, boolean isPrivate) throws Exception {
+		String url = "";
+        // Make sure the file is valid
+        String[] type = file.getContentType().split("/");
+        if (type[0].equalsIgnoreCase("audio")) {
+            //url = file.getOriginalFilename().replaceAll(" ", "_");
+			url = randomUUID().toString(); //unique url
+        } else {
+            throw new Exception("This file type is not accepted.");
+        }
+		
+        // Store the file in the database
+        try {
+			this.scRepo.save(new SoundClip(file.getOriginalFilename(), type[1], file.getBytes(), url, isPrivate));
+        } catch (IOException ioe) {
+            throw new Exception("Failed to upload the file. Please try again.");
+        }
+
+        return url;
     }
 }

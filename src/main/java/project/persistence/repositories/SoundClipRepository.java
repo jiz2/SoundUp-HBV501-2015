@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import project.persistence.entities.SoundClip;
 
 import java.util.List;
-import org.springframework.data.repository.query.Param;
 
 /**
  * By extending the {@link JpaRepository} we have access to powerful methods.
@@ -18,19 +17,8 @@ public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
 
     SoundClip save(SoundClip soundClip);
 
-    void delete(SoundClip soundClip);
-
-    List<SoundClip> findAll();
-
-    // Instead of the method findAllReverseOrder() in SoundClipService.java,
-    // We could have used this method by adding the words
-    // ByOrderByIdDesc, which mean: Order By Id in a Descending order
-    //
-    List<SoundClip> findAllByOrderByIdDesc();
-
-    SoundClip findOne(Long id);
-
-    List<SoundClip> findByName(String name);
+	@Query("SELECT s FROM SoundClip s WHERE s.url = ?1")
+	SoundClip findByUrl(String url);
 	
 	@Query("SELECT s FROM SoundClip s WHERE UPPER(s.name) LIKE %?1%")
 	List<SoundClip> findAllLike(String search);
