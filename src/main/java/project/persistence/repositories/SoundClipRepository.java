@@ -7,9 +7,9 @@ import project.persistence.entities.SoundClip;
 
 public interface SoundClipRepository extends JpaRepository<SoundClip, Long> {
 
+	SoundClip findById(long id);
 	List<SoundClip> findByName(String s);
 	List<SoundClip> findByExt(String s);
-	SoundClip findByUrl(String url);
 	List<SoundClip> findByUploader(String s);
 	List<SoundClip> findByIsPrivate(String s);
 	

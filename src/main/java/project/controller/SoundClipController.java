@@ -27,10 +27,10 @@ public class SoundClipController {
         this.soundClipService = soundClipService;
     }
 
-    @RequestMapping(value = "/play/{url}", method = RequestMethod.GET)
-    public String findByUrl(Model model, HttpSession session, @PathVariable String url){
+    @RequestMapping(value = "/play/{name}", method = RequestMethod.GET)
+    public String findByUrl(Model model, HttpSession session, @PathVariable String name){
 		try {
-			SoundClip sc = this.soundClipService.findByUrl(url);
+			SoundClip sc = this.soundClipService.findByName(name).get(0);
             model.addAttribute("soundclip", sc);
         } catch (Exception e) {
             System.err.println("Could not get clip: " + e.getMessage());
@@ -53,22 +53,22 @@ public class SoundClipController {
 				model.addAttribute("err", "Make sure you choose a valid audio file.");
 				return "Index";
 			}
-			try {
-				String url = java.util.UUID.randomUUID().toString();
-				
-				User u = (User) session.getAttribute("user");
-				String uploader = null;
-				if(u != null && !u.getName().equals("")){
-					uploader = u.getName();
-				} else {
-					isPrivate = false;
-				}
-				this.soundClipService.save(new SoundClip(file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[0], type[1], file.getBytes(), url, uploader, isPrivate));
-				
-				model.addAttribute("soundclip", this.soundClipService.findByUrl(url));
-			} catch (IOException e) {
-				model.addAttribute("err", e.getMessage());
-			}
+//			try {
+//				String url = java.util.UUID.randomUUID().toString();
+//
+//				User u = (User) session.getAttribute("user");
+//				String uploader = null;
+//				if(u != null && !u.getName().equals("")){
+//					uploader = u.getName();
+//				} else {
+//					isPrivate = false;
+//				}
+//				this.soundClipService.save(new SoundClip(file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[0], type[1], file.getBytes(), url, uploader, isPrivate));
+//
+//				model.addAttribute("soundclip", this.soundClipService.findByUrl(url));
+//			} catch (IOException e) {
+//				model.addAttribute("err", e.getMessage());
+//			}
 		} else {
 			model.addAttribute("err", "Please select a file for upload!");
 			return "Index";

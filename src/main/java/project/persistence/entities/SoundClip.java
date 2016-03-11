@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Soundclips")
+@Table(name = "soundclip")
 public class SoundClip implements Serializable {
 
     @Id
@@ -12,20 +12,20 @@ public class SoundClip implements Serializable {
     private Long id;
     private String name;
     private String ext;
-    private byte[] binaryStr;
-	private String url;
-	private String uploader;
+    private String data;
+    private String uploader;
+
+    @Column(name = "private")
 	private boolean isPrivate;
 
     public SoundClip() {
     }
 
-    public SoundClip(String name, String ext, byte[] binaryStr, String url, String uploader, boolean isPrivate) {
+    public SoundClip(String name, String ext, String data, String uploader, boolean isPrivate) {
         this.name = name;
         this.ext = ext;
-        this.binaryStr = binaryStr;
-		this.url = url;
-		this.uploader = uploader;
+        this.data = data;
+        this.uploader = uploader;
 		this.isPrivate = isPrivate;
     }
 
@@ -53,23 +53,15 @@ public class SoundClip implements Serializable {
         this.ext = ext;
     }
 
-    public byte[] getBinaryStr() {
-        return this.binaryStr;
+    public String getData() {
+        return this.data;
     }
 
-    public void setBinaryStr(byte[] binaryStr) {
-        this.binaryStr = binaryStr;
+    public void setData(String data) {
+        this.data = data;
     }
 
-	public String getUrl() {
-        return this.url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-	
-	public String getUploader() {
+    public String getUploader() {
         return this.uploader;
     }
 
@@ -86,6 +78,6 @@ public class SoundClip implements Serializable {
 	}
 	
 	public String getBase64Str(){
-		return java.util.Base64.getEncoder().encodeToString(this.getBinaryStr());
+		return this.getData();
 	}
 }
