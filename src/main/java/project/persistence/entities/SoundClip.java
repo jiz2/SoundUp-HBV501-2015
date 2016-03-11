@@ -1,10 +1,11 @@
 package project.persistence.entities;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Soundclips")
-public class SoundClip {
+public class SoundClip implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,16 +14,18 @@ public class SoundClip {
     private String ext;
     private byte[] binaryStr;
 	private String url;
+	private String uploader;
 	private boolean isPrivate;
 
     public SoundClip() {
     }
 
-    public SoundClip(String name, String ext, byte[] binaryStr, String url, boolean isPrivate) {
+    public SoundClip(String name, String ext, byte[] binaryStr, String url, String uploader, boolean isPrivate) {
         this.name = name;
         this.ext = ext;
         this.binaryStr = binaryStr;
 		this.url = url;
+		this.uploader = uploader;
 		this.isPrivate = isPrivate;
     }
 
@@ -64,7 +67,16 @@ public class SoundClip {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+	
+	public String getUploader() {
+        return this.uploader;
+    }
+
+    public void setUploader(String uploader) {
+        this.uploader = uploader;
     }	
+	
 	public boolean getIsPrivate() {
 		return this.isPrivate;
 	}
@@ -76,13 +88,4 @@ public class SoundClip {
 	public String getBase64Str(){
 		return java.util.Base64.getEncoder().encodeToString(this.getBinaryStr());
 	}
-
-    // This is for easier debug.
-    @Override
-    public String toString() {
-        return String.format(
-                "Sound Clip[name=%s, binaryStr=%s]",
-                name, new String(binaryStr)
-        );
-    }
 }

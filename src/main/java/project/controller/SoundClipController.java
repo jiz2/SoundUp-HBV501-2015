@@ -1,5 +1,8 @@
 package project.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,21 +14,23 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import project.persistence.entities.User;
 import project.service.SoundClipService;
 
 @Controller
+@RequestMapping("/soundclip")
 public class SoundClipController {
-    SoundClipService scService;
+    private final SoundClipService soundClipService;
 
     @Autowired
-    public SoundClipController(SoundClipService scService) {
-        this.scService = scService;
+    public SoundClipController(SoundClipService soundClipService) {
+        this.soundClipService = soundClipService;
     }
 
-    @RequestMapping(value = "/soundclip/play/{url}", method = RequestMethod.GET)
+    @RequestMapping(value = "/play/{url}", method = RequestMethod.GET)
     public String findByUrl(Model model, HttpSession session, @PathVariable String url){
 		try {
-			SoundClip sc = this.scService.findByUrl(url);
+			SoundClip sc = this.soundClipService.findByUrl(url);
             model.addAttribute("soundclip", sc);
         } catch (Exception e) {
             System.err.println("Could not get clip: " + e.getMessage());
@@ -34,38 +39,55 @@ public class SoundClipController {
         return "SoundClip";
     }
 	
-	@RequestMapping(value = "/soundclip/upload", method = RequestMethod.GET)
-	public String upload(Model model){
-		model.addAttribute("action", "Success");
+	@RequestMapping(value = "/upload", method = RequestMethod.GET)
+	public String getUpload(Model model){
+		model.addAttribute("action", "Upload");
 		return "SoundClip";
 	}
 
-	@RequestMapping(value = "/soundclip/upload", method = RequestMethod.POST)
-	public String upload(Model model, @RequestParam("file") MultipartFile file, @RequestParam("private") boolean isPrivate, HttpSession session){
-		String url = "";
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String postUpload(Model model, @RequestParam("file") MultipartFile file, @RequestParam("private") boolean isPrivate, HttpSession session) throws IOException{
 		if (!file.isEmpty()) {
+			String[] type = file.getContentType().split("/");
+			if (!type[0].equalsIgnoreCase("audio")) {
+				model.addAttribute("err", "Make sure you choose a valid audio file.");
+				return "Index";
+			}
 			try {
-				url = this.scService.upload(model, session, file, isPrivate);
-			} catch (Exception e) {
+				String url = java.util.UUID.randomUUID().toString();
+				
+				User u = (User) session.getAttribute("user");
+				String uploader = null;
+				if(u != null && !u.getName().equals("")){
+					uploader = u.getName();
+				} else {
+					isPrivate = false;
+				}
+				this.soundClipService.save(new SoundClip(file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[0], type[1], file.getBytes(), url, uploader, isPrivate));
+				
+				model.addAttribute("soundclip", this.soundClipService.findByUrl(url));
+			} catch (IOException e) {
 				model.addAttribute("err", e.getMessage());
 			}
 		} else {
 			model.addAttribute("err", "Please select a file for upload!");
+			return "Index";
 		}
-		model.addAttribute("soundclip", this.scService.findByUrl(url));
-		model.addAttribute("action", "Success");
+		model.addAttribute("action", "Upload");
 		return "SoundClip";
 	}
 	
-	@RequestMapping(value = "/soundclip/search", method = RequestMethod.GET)
-	public String findAllLike(Model model, @RequestParam("searchTerm") String searchTerm){
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String findAllLike(Model model, HttpSession session, @RequestParam("searchTerm") String searchTerm){
 		if (searchTerm.equals("")) {
 			model.addAttribute("err", "Please type something into the search window.");
 		} else {
-			List<SoundClip> Soundclips = this.scService.findAllLike(searchTerm);
+			List<SoundClip> Soundclips = this.soundClipService.findAllLike(searchTerm);
 			model.addAttribute("searchTerm", searchTerm);
 			model.addAttribute("soundclips", Soundclips.toArray());
 		}
+		User u = (User) session.getAttribute("user");
+		model.addAttribute("user", u);
 		model.addAttribute("action", "Search results");
 		return "SoundClip";
 	}

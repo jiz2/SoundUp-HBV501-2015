@@ -1,13 +1,14 @@
 package project.persistence.entities;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String name;
     private String pw;
 
@@ -19,11 +20,11 @@ public class User {
         this.pw = hash;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -41,14 +42,5 @@ public class User {
 
     public void setPw(String pw) {
         this.pw = pw;
-    }
-
-    // This is for easier debug.
-    @Override
-    public String toString() {
-        return String.format(
-                "User[name=%s, pw=%s]",
-                name, pw
-        );
     }
 }

@@ -7,7 +7,7 @@
 				<p>${err}</p>
 			</c:when>
 
-			<c:when test="${(action=='Success' || action=='Play') && not empty soundclip}">
+			<c:when test="${(action=='Upload' || action=='Play') && not empty soundclip}">
 				<p>Filename: ${soundclip.getName()}</p>
 				<c:choose>
 					<c:when test="${not empty user}">
@@ -23,9 +23,30 @@
 			
 			<c:when test="${action=='Search results' && not empty soundclips}">
 				<%--${requestScope['javax.servlet.forward.request_uri']}--%>
+				<p>Your search for "${searchTerm}" returned these results:</p>
 				<ol>
                     <c:forEach items="${soundclips}" var="s">
-						<li><a href="/soundclip/play/${s.getUrl()}">${s.name}</a></li>
+						<c:choose>
+							<c:when test="${!s.getIsPrivate() || user.getName().equals(s.getUploader())}">
+								<li>
+									<a href="/soundclip/play/${s.getUrl()}">${s.getName()}</a>
+									<c:choose>
+										<c:when test="${empty s.getUploader()}">
+											<span> Uploaded by: Guest.</span>
+										</c:when>
+										<c:when test="${not empty user && user.getName().equals(s.getUploader())}">
+											<span> Uploaded by: You</span>
+										</c:when>
+										<c:otherwise><span>Uploaded by: ${s.getUploader()}. </span></c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${not empty user && user.getName().equals(s.getUploader())}">
+											<span> (private).</span>
+										</c:when>
+									</c:choose>
+								</li>
+							</c:when>
+						</c:choose>
 					</c:forEach>
 				</ol>
 			</c:when>

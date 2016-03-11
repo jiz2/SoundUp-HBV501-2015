@@ -8,7 +8,7 @@
 			</c:when>
 
 			<c:when test="${not empty user}">
-				<p>You're logged in as: ${user.name}</p>
+				<p>You're logged in as: ${user.getName()}</p>
 				<form method="POST" action="/user/logout">
 					<button type="submit" class="btn btn-danger">Logout</button>
 				</form>
@@ -19,7 +19,7 @@
 					<div class="form-group">
 						<p>
 							<label for="user">Username:
-								<input id="user" name="user" type="text">
+								<input id="user" name="name" type="text">
 							</label>
 						</p>
 						<p>

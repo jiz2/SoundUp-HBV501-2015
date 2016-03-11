@@ -9,52 +9,58 @@ import org.springframework.web.bind.annotation.RequestParam;
 import project.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import project.persistence.entities.User;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
-	UserService uService;
+	private final UserService userService;
 
 	@Autowired
-	public UserController(UserService uService) {
-	   this.uService = uService;
+	public UserController(UserService userService) {
+	   this.userService = userService;
 	}
-
-	@RequestMapping(value = "/user/register", method = RequestMethod.GET)
-	public String getReg(Model model){
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String getRegister(Model model){
 		model.addAttribute("action", "Register");
 		return "User";
 	}
 
-	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
-	public String postReg(Model model, @RequestParam String name, @RequestParam String pass){
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String postRegister(Model model, HttpSession session, @RequestParam String name, @RequestParam String pw){
 		try {
-			this.uService.register(model, name, pass);
-		} catch (Exception e) {
-			model.addAttribute("err", "Registration failed.");
+			User u = this.userService.register(new User(name, pw));
+			model.addAttribute("user", u);
+			session.setAttribute("user", u);
+		} catch (Exception e) {	
+			model.addAttribute("err", "Registration failed: " + e.getMessage());
 		}
 		model.addAttribute("action", "Register");
 		return "User";
 	}
 
-	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLogin(Model model){
 		model.addAttribute("action", "Login");
 		return "User";
 	}
 
-	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String postLogin(Model model, HttpSession session, @RequestParam String user, @RequestParam String pw){
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String postLogin(Model model, HttpSession session, @RequestParam String name, @RequestParam String pw){
 		try {
-			session.setAttribute("user", this.uService.login(user, pw));
+			User u = this.userService.login(new User(name, pw));
+			model.addAttribute("user", u);
+			session.setAttribute("user", u);
 		} catch (Exception e) {
-			model.addAttribute("err", "Login failed.");
+			model.addAttribute("err", "Login failed: " + e.getMessage());
 		}
 		model.addAttribute("action", "Login");
 		return "User";
 	}
 
-	@RequestMapping(value = "/user/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session){
 		session.removeAttribute("user");
 		return "redirect:/";
