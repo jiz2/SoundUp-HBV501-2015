@@ -82,47 +82,47 @@ public class UserRestController {
         return new ResponseEntity<User>(currentUser, HttpStatus.OK);
     }
  
-    @RequestMapping(value = "/crud/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
-        System.out.println("Fetching & Deleting User with id " + id);
- 
-        User user = userService.findOne(id);
-        if (user == null) {
-            System.out.println("Unable to delete. User with id " + id + " not found");
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-        }
- 
-        userService.delete(user);
-        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
-    }
- 
-    @RequestMapping(value = "/crud/", method = RequestMethod.DELETE)
-    public ResponseEntity<User> deleteAllUsers() {
-        System.out.println("Deleting All Users");
-        userService.deleteAll();
-        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
-    }
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public void postReg(HttpSession session, @RequestParam String name, @RequestParam String pw) throws Exception{
-		System.out.println("Registrering User");
-		session.setAttribute("user", this.userService.register(new User(name, pw)));
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public void postLogin(HttpSession session, @RequestParam String name, @RequestParam String pw) throws Exception{
-		System.out.println("Logging In User");
-		session.setAttribute("user", this.userService.login(new User(name, pw)));
-	}
-
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public void logout(HttpSession session){
-		System.out.println("Logging Out User");
-		session.removeAttribute("user");
-	}
-	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public List<User> findAllLike(@RequestParam("searchTerm") String searchTerm){
-		return this.userService.findAllLike(searchTerm);
-	}
+//    @RequestMapping(value = "/crud/{id}", method = RequestMethod.DELETE)
+//    public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
+//        System.out.println("Fetching & Deleting User with id " + id);
+//
+//        User user = userService.findOne(id);
+//        if (user == null) {
+//            System.out.println("Unable to delete. User with id " + id + " not found");
+//            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        userService.delete(user);
+//        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+//    }
+//
+//    @RequestMapping(value = "/crud/", method = RequestMethod.DELETE)
+//    public ResponseEntity<User> deleteAllUsers() {
+//        System.out.println("Deleting All Users");
+//        userService.deleteAll();
+//        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+//    }
+//
+//	@RequestMapping(value = "/register", method = RequestMethod.POST)
+//	public void postReg(HttpSession session, @RequestParam String name, @RequestParam String pw) throws Exception{
+//		System.out.println("Registrering User");
+//		session.setAttribute("user", this.userService.register(new User(name, pw)));
+//	}
+//
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public void postLogin(HttpSession session, @RequestParam String name, @RequestParam String pw) throws Exception{
+//		System.out.println("Logging In User");
+//		session.setAttribute("user", this.userService.login(new User(name, pw)));
+//	}
+//
+//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+//	public void logout(HttpSession session){
+//		System.out.println("Logging Out User");
+//		session.removeAttribute("user");
+//	}
+//
+//	@RequestMapping(value = "/search", method = RequestMethod.GET)
+//	public List<User> findAllLike(@RequestParam("searchTerm") String searchTerm){
+//		return this.userService.findAllLike(searchTerm);
+//	}
 }
