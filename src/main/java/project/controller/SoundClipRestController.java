@@ -30,19 +30,19 @@ public class SoundClipRestController {
         this.soundClipService = soundClipService;
     }
 	
-	@RequestMapping(value = "/crud/", method = RequestMethod.GET)
-    public ResponseEntity<List<SoundResult>> findAllSoundClips() {
-
-        List<SoundClip> soundClips = soundClipService.findAll();
-        //HttpStatus.NO_CONTENT
-        if(soundClips.isEmpty()) return new ResponseEntity<List<SoundResult>>(HttpStatus.NOT_FOUND);
-
-        // Convert SoundClips into their light-weight counterpart SoundResults
-        List <SoundResult> soundResults = new ArrayList<SoundResult>();
-        for (SoundClip sc: soundClips) soundResults.add(new SoundResult(sc));
-
-        return new ResponseEntity<List<SoundResult>>(soundResults, HttpStatus.OK);
-    }
+//	@RequestMapping(value = "/crud/", method = RequestMethod.GET)
+//    public ResponseEntity<List<SoundResult>> findAllSoundClips() {
+//
+//        List<SoundClip> soundClips = soundClipService.findAll();
+//        //HttpStatus.NO_CONTENT
+//        if(soundClips.isEmpty()) return new ResponseEntity<List<SoundResult>>(HttpStatus.NOT_FOUND);
+//
+//        // Convert SoundClips into their light-weight counterpart SoundResults
+//        List <SoundResult> soundResults = new ArrayList<SoundResult>();
+//        for (SoundClip sc: soundClips) soundResults.add(new SoundResult(sc));
+//
+//        return new ResponseEntity<List<SoundResult>>(soundResults, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/crud/{name}", method = RequestMethod.GET)
     public ResponseEntity<List<SoundResult>> findSoundClip(@PathVariable("name") String name) {
@@ -58,16 +58,16 @@ public class SoundClipRestController {
         return new ResponseEntity<List<SoundResult>>(soundResults, HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/crud/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<SoundClip> findSoundClip(@PathVariable("id") long id) {
-        System.out.println("Fetching SoundClip with id " + id);
-        SoundClip soundClip = soundClipService.findById(id);
-        if (soundClip == null) {
-            System.out.println("SoundClip with id " + id + " not found");
-            return new ResponseEntity<SoundClip>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<SoundClip>(soundClip, HttpStatus.OK);
-    }
+//	@RequestMapping(value = "/crud/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<SoundClip> findSoundClip(@PathVariable("id") long id) {
+//        System.out.println("Fetching SoundClip with id " + id);
+//        SoundClip soundClip = soundClipService.findById(id);
+//        if (soundClip == null) {
+//            System.out.println("SoundClip with id " + id + " not found");
+//            return new ResponseEntity<SoundClip>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<SoundClip>(soundClip, HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/crud/", method = RequestMethod.POST)
     public ResponseEntity<Void> createSoundClip(@RequestBody SoundClip soundClip, UriComponentsBuilder ucBuilder) {
