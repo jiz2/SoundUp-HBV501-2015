@@ -50,20 +50,20 @@ public class UserRestController {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
  
-    @RequestMapping(value = "/crud/", method = RequestMethod.POST)
-    public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating User " + user.getName());
-        if (userService.exists(user.getId())) {
-            System.out.println("A User with name " + user.getName() + " already exist");
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
- 
-        userService.save(user);
- 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-    }
+//    @RequestMapping(value = "/crud/", method = RequestMethod.POST)
+//    public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+//        System.out.println("Creating User " + user.getName());
+//        if (userService.exists(user.getId())) {
+//            System.out.println("A User with name " + user.getName() + " already exist");
+//            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+//        }
+//
+//        userService.save(user);
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+//        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+//    }
 //
 //    @RequestMapping(value = "/crud/{id}", method = RequestMethod.PUT)
 //    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
