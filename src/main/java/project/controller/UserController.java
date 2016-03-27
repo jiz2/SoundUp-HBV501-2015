@@ -31,9 +31,9 @@ public class UserController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String postRegister(Model model, HttpSession session, @RequestParam String name, @RequestParam String pw){
 		try {
-			User u = this.userService.register(new User(name, pw));
-			model.addAttribute("user", u);
-			session.setAttribute("user", u);
+//			User u = this.userService.register(new User(name, pw));
+//			model.addAttribute("user", u);
+//			session.setAttribute("user", u);
 		} catch (Exception e) {	
 			model.addAttribute("err", "Registration failed: " + e.getMessage());
 		}
@@ -50,9 +50,9 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String postLogin(Model model, HttpSession session, @RequestParam String name, @RequestParam String pw){
 		try {
-			User u = this.userService.login(new User(name, pw));
-			model.addAttribute("user", u);
-			session.setAttribute("user", u);
+//			User u = this.userService.login(new User(name, pw));
+//			model.addAttribute("user", u);
+//			session.setAttribute("user", u);
 		} catch (Exception e) {
 			model.addAttribute("err", "Login failed: " + e.getMessage());
 		}
