@@ -43,8 +43,8 @@ public class UserService {
 		return this.uRepo.findOne(id);
 	}
 	public User save(User u){
-		String encodedPw = passwordEncoder.encode(u.getPw());
-		u.setPw(encodedPw);
+		//String encodedPw = passwordEncoder.encode(u.getPw());
+		//u.setPw(encodedPw);
 		return this.uRepo.save(u);
 	}
 	
@@ -55,35 +55,36 @@ public class UserService {
 	public List<User> findAllLike(String s) {
 		return this.uRepo.findAllLike(s.toUpperCase());
 	}
+
 	
-//    public User register(User u) throws Exception {
-//		String name = u.getName();
-//		List<User> lu = this.uRepo.findByName(name);
-//		if(!lu.isEmpty()){
-//			throw new Exception("A user already exists with the same name!");
-//		}
-//
-//		String encodedPw = passwordEncoder.encode(u.getPw());
-//		u.setPw(encodedPw);
-//		try {
-//			return this.uRepo.save(u);
-//		} catch (ConstraintViolationException ce) {
-//            throw ce;
-//        }
-//    }
-//
-//    public User login(User u) throws Exception {
-//		String name = u.getName();
-//		List<User> lu = this.uRepo.findByName(name);
-//		if(lu.isEmpty()){
-//			throw new Exception("We could not find a user with the name \""+name+"\".");
-//		}
-//
-//		User u_data = lu.get(0);
-//		if (passwordEncoder.matches(u.getPw(), u_data.getPw())) {
-//            return u_data;
-//        } else {
-//            throw new Exception("Invalid username or password.");
-//        }
-//    }
+    public User register(User u) throws Exception {
+		String name = u.getName();
+		List<User> lu = this.uRepo.findByName(name);
+		if(!lu.isEmpty()){
+			throw new Exception("A user already exists with the same name!");
+		}
+
+		String encodedPw = passwordEncoder.encode(u.getPw());
+		u.setPw(encodedPw);
+		try {
+			return this.uRepo.save(u);
+		} catch (ConstraintViolationException ce) {
+            throw ce;
+        }
+    }
+
+    public User login(User u) throws Exception {
+		String name = u.getName();
+		List<User> lu = this.uRepo.findByName(name);
+		if(lu.isEmpty()){
+			throw new Exception("We could not find a user with the name \""+name+"\".");
+		}
+
+		User u_data = lu.get(0);
+		if (passwordEncoder.matches(u.getPw(), u_data.getPw())) {
+            return u_data;
+        } else {
+            throw new Exception("Invalid username or password.");
+        }
+    }
 }
