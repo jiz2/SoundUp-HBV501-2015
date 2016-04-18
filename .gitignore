@@ -111,3 +111,4 @@ local.properties
 *.netbeans_automatic_build
 
 target/*
+/target/

@@ -18,7 +18,7 @@
 					<source src="data:audio/${soundclip.getExt()};base64,${soundclip.getBase64Str()}">
 				</audio>
 				<br>
-				<a href="/soundclip/play/${soundclip.getUrl()}">Copy this link address to share this sound clip with friends!</a>
+				<a href="/soundclip/play/${soundclip.getName()}">Copy this link address to share this sound clip with friends!</a>
 			</c:when>
 			
 			<c:when test="${action=='Search results' && not empty soundclips}">
@@ -29,7 +29,7 @@
 						<c:choose>
 							<c:when test="${!s.getIsPrivate() || user.getName().equals(s.getUploader())}">
 								<li>
-									<a href="/soundclip/play/${s.getUrl()}">${s.getName()}</a>
+									<a href="/soundclip/play/${s.getName()}">${s.getName()}</a>
 									<c:choose>
 										<c:when test="${empty s.getUploader()}">
 											<span> Uploaded by: Guest.</span>

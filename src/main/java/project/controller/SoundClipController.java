@@ -27,10 +27,11 @@ public class SoundClipController {
         this.soundClipService = soundClipService;
     }
 
-    @RequestMapping(value = "/play/{name}", method = RequestMethod.GET)
-    public String findByUrl(Model model, HttpSession session, @PathVariable String name){
+    @RequestMapping(value = "/play/{name}.{ext}", method = RequestMethod.GET)
+    public String findByUrl(Model model, HttpSession session, @PathVariable String name, @PathVariable String ext){
 		try {
-			SoundClip sc = this.soundClipService.findByName(name).get(0);
+			System.out.println(name);
+			SoundClip sc = this.soundClipService.findByName(name+"."+ext).get(0);
             model.addAttribute("soundclip", sc);
         } catch (Exception e) {
             System.err.println("Could not get clip: " + e.getMessage());

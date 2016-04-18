@@ -5,7 +5,7 @@ CREATE TABLE soundclip
   ext character varying(10) NOT NULL,
   uploader character varying(255),
   data character varying NOT NULL,
-  isPrivate boolean NOT NULL,
+  private boolean NOT NULL,
   CONSTRAINT soundclips_pkey PRIMARY KEY (id)
 );
 
