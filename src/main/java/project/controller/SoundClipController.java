@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import project.persistence.entities.SoundClip;
 import javax.servlet.http.HttpSession;
+import java.util.Base64;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +32,7 @@ public class SoundClipController {
     public String findByUrl(Model model, HttpSession session, @PathVariable String name, @PathVariable String ext){
 		try {
 			System.out.println(name);
-			SoundClip sc = this.soundClipService.findByName(name+"."+ext).get(0);
+			SoundClip sc = this.soundClipService.findByName(name).get(0);
             model.addAttribute("soundclip", sc);
         } catch (Exception e) {
             System.err.println("Could not get clip: " + e.getMessage());
@@ -54,22 +55,22 @@ public class SoundClipController {
 				model.addAttribute("err", "Make sure you choose a valid audio file.");
 				return "Index";
 			}
-//			try {
-//				String url = java.util.UUID.randomUUID().toString();
-//
-//				User u = (User) session.getAttribute("user");
-//				String uploader = null;
-//				if(u != null && !u.getName().equals("")){
-//					uploader = u.getName();
-//				} else {
-//					isPrivate = false;
-//				}
-//				this.soundClipService.save(new SoundClip(file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[0], type[1], file.getBytes(), url, uploader, isPrivate));
-//
-//				model.addAttribute("soundclip", this.soundClipService.findByUrl(url));
-//			} catch (IOException e) {
-//				model.addAttribute("err", e.getMessage());
-//			}
+			try {
+				User u = (User) session.getAttribute("user");
+				String uploader = null;
+				if(u != null && !u.getName().equals("")){
+					uploader = u.getName();
+				} else {
+					isPrivate = false;
+				}
+				String data = Base64.getEncoder().encodeToString(file.getBytes());
+				SoundClip newClip = new SoundClip(file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[0], type[1], data, uploader, isPrivate);
+				this.soundClipService.save(newClip);
+
+				model.addAttribute("soundclip", newClip);
+			} catch (IOException e) {
+				model.addAttribute("err", e.getMessage());
+			}
 		} else {
 			model.addAttribute("err", "Please select a file for upload!");
 			return "Index";
